@@ -1,0 +1,15 @@
+header {
+    height: 30vh;
+    background-image: url('../assets/backgroundImage.jpg'); // https: //www.freepik.com/free-vector/hand-drawn-food-elements_1159027.htm
+    background-position: center; 
+    background-size: cover;
+
+    h1 {
+        text-align: center;
+        text-transform: uppercase;
+        background-color: #43AA8B;
+        color: white;
+        font-family: $font;
+        font-weight: 600;
+    }
+}
