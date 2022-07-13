@@ -7,8 +7,39 @@
     <link rel="stylesheet" href="./styles/style.css">
 </head>
 <body>
-    <h1>Recipes!</h1>
-	
-    <script src="./script.js"></script>
-</body> 
+    <header>
+        <h1>Recipe Generator</h1>
+    </header>
+    <main>
+        <section class="introDropdown">
+            <div class="wrapper">
+                <p>Are you hungry and not sure what to cook? Need some inspiration for today's dinner?</p>
+                <p>Once you select a cuisine from the options below, we will randomly generate a recipe image and name</p>
+            </div>
+
+            <form action="#">
+                <select name="cuisineSelect" id="cuisineSelect">
+                    <option value="">Select a Cuisine</option>
+                    <!-- Options will be populated using JS -->
+                </select>
+            </form>
+        </section>
+
+
+        <section class="results">
+            <div class="wrapper" id="recipeResult">
+                <!-- Results will be appended once called from API -->
+            </div>
+        </section>
+
+    </main>  
+    <footer>
+        <div class="wrapper">
+            <p>Created at Juno College</p>
+            <p>API data from <a href="https://spoonacular.com/food-api">Spoonacular</a></p>
+            <!-- <p><a href="">GitHub link</a></p> -->
+        </div>
+    </footer>
+</body>
+<script src="./script.js"></script>
 </html>
