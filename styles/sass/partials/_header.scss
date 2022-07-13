@@ -7,9 +7,8 @@ header {
     h1 {
         text-align: center;
         text-transform: uppercase;
-        background-color: #43AA8B;
-        color: white;
-        font-family: $font;
+        background-color: $accentColor;
+        color: $backgroundColor;
         font-weight: 600;
     }
 }

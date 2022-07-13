@@ -18,14 +18,16 @@
             <div class="wrapper">
                 <p>Are you hungry and not sure what to cook? Need some inspiration for today's dinner?</p>
                 <p>Once you select a cuisine from the options below, we will randomly generate a recipe image and name</p>
+
+				<form action="#">
+					<select name="cuisineSelect" id="cuisineSelect">
+						<option value="" selected disabled>Select a Cuisine</option>
+						<!-- Options will be populated using JS -->
+					</select>
+				</form>
             </div>
 
-            <form action="#">
-                <select name="cuisineSelect" id="cuisineSelect">
-                    <option value="">Select a Cuisine</option>
-                    <!-- Options will be populated using JS -->
-                </select>
-            </form>
+
         </section>
 
 

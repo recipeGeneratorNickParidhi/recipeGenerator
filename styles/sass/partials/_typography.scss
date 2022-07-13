@@ -1,0 +1,28 @@
+html {
+    font-size: 125%;
+}
+
+body {
+    font-family: $font;
+}
+
+h1,
+h2,
+h3,
+ul,
+li,
+a,
+input,
+p {
+    margin: 0;
+    padding: 0;
+}
+
+ul {
+    list-style: none;
+}
+
+a {
+    text-decoration: none;
+    color: inherit;
+}
