@@ -65,13 +65,16 @@ recipesApp.apiCall = function (selectedCusine) {
 
     fetch(url)
         .then(function (response) {
+        if (response.ok) {
             return response.json();
+        } else {
+            throw new Error();
+        }
         })
         .then(function (jsonData) {
             recipesApp.displaydata(jsonData)
         })
         .catch(function (error) {
-            console.log(error)
             recipesApp.errorHandle()
         })
 }
