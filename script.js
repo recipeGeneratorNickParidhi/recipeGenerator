@@ -53,7 +53,7 @@ recipesApp.userQuery = function(dropdownMenu){
 
 
 recipesApp.apiUrl = "https://api.spoonacular.com/recipes/complexSearch/"
-recipesApp.apiKey = "74f35dea60504b57ae6e6936c084093f"
+recipesApp.apiKey = "fe85d898fb63487580be98fbc1b392f4"
 
 // Making api call based on user selection
 recipesApp.apiCall = function (selectedCusine) {
@@ -94,19 +94,21 @@ recipesApp.displaydata = function (recipesData) {
 
     newHeading.textContent = recipesData.results[recipesApp.randomNumber].title;
     imageItem.src = recipesData.results[recipesApp.randomNumber].image;
-    outerDiv.appendChild(newHeading);
-    outerDiv.appendChild(imageItem);
+
+    outerDiv.innerHTML = `
+    <h2>${newHeading.textContent}</h2>
+    <div class="imgContainer"><img src=${imageItem.src}></div>
+    `
 }
 
 // Error Handling no response from API
-
 recipesApp.errorHandle = function () {
     const outerDiv = document.querySelector('#recipeResult');
     outerDiv.innerHTML = '';
     const newHeading = document.createElement('h2');
     newHeading.textContent = 'Sorry - No Recipes match that selection. Please select again';
     outerDiv.appendChild(newHeading);
-
+    // add a function here for a random joke when error handling!
 
 }
 
