@@ -69,7 +69,11 @@ recipesApp.apiCall = function (selectedCusine) {
         })
         .then(function (jsonData) {
             recipesApp.displaydata(jsonData)
-        });
+        })
+        .catch(function (error) {
+            console.log(error)
+            recipesApp.errorHandle()
+        })
 }
 
 // Displaying data on page
@@ -84,15 +88,26 @@ recipesApp.displaydata = function (recipesData) {
 
     // Choosing random number between 0 and 9 to select from Array
     recipesApp.randomNumber = Math.floor(Math.random() * 10);
-    console.log(recipesApp.randomNumber);
 
     newHeading.textContent = recipesData.results[recipesApp.randomNumber].title;
     imageItem.src = recipesData.results[recipesApp.randomNumber].image;
-    console.log(newHeading);
-    console.log(imageItem);
     outerDiv.appendChild(newHeading);
     outerDiv.appendChild(imageItem);
 }
+
+// Error Handling no response from API
+
+recipesApp.errorHandle = function () {
+    const outerDiv = document.querySelector('#recipeResult');
+    outerDiv.innerHTML = '';
+    const newHeading = document.createElement('h2');
+    newHeading.textContent = 'Sorry - No Recipes match that selection. Please select again';
+    outerDiv.appendChild(newHeading);
+
+
+}
+
+// Init
 
 recipesApp.init = function(){
     recipesApp.populateCuisineSelect(recipesApp.cuisineOptions);
