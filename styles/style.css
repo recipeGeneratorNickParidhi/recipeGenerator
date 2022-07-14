@@ -266,28 +266,29 @@ img {
   margin: 0 auto;
 }
 
-header {
-  height: 30vh;
-  background-image: url("../assets/backgroundImage.jpg");
-  background-position: center;
-  background-size: cover;
-}
 header h1 {
   text-align: center;
   text-transform: uppercase;
   background-color: #43AA8B;
   color: white;
   font-weight: 600;
+  padding: 1rem 0;
+}
+header .headerImage {
+  background-image: url("../assets/backgroundImage.jpg");
+  background-position: center;
+  background-size: cover;
+  height: 50vh;
 }
 
 footer {
   background-color: #43AA8B;
-  height: 5vh;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
 }
-footer .wrapper {
+footer .footerContent {
+  width: 100%;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -298,21 +299,84 @@ footer .wrapper {
       -ms-flex-align: center;
           align-items: center;
 }
-footer .wrapper p {
+footer .footerContent p {
   color: white;
+  padding: 1.2rem 0;
 }
-footer .wrapper p a {
+footer .footerContent p a {
   text-decoration: underline;
+  -webkit-transition: 0.4s;
+  transition: 0.4s;
 }
-footer .wrapper p a:hover {
+footer .footerContent p a:hover {
   color: #003391;
 }
 
 main {
-  height: 65vh;
   text-align: center;
 }
 
 .introDropdown {
+  margin: 50px 0;
   width: 100%;
+}
+.introDropdown p {
+  padding: 1rem 0;
+}
+.introDropdown select {
+  background-color: #43AA8B;
+  color: white;
+  padding: 0.5rem 1rem;
+  text-align: center;
+  border: none;
+}
+.introDropdown select option {
+  color: white;
+}
+
+.results {
+  margin: 0 0 75px;
+}
+.results .wrapper {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+.results h2 {
+  padding: 1rem 0;
+}
+.results .imgContainer {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-shadow: 0 0 20px #43AA8B;
+          box-shadow: 0 0 20px #43AA8B;
+}
+
+@media (max-width: 720px) {
+  footer .footerContent {
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: column;
+            flex-direction: column;
+  }
+  footer .footerContent p {
+    padding-top: 1rem;
+  }
+  footer .footerContent p:last-child {
+    padding-bottom: 1rem;
+  }
 }

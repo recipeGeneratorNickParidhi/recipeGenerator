@@ -1,14 +1,17 @@
-header {
-    height: 30vh;
-    background-image: url('../assets/backgroundImage.jpg'); // https: //www.freepik.com/free-vector/hand-drawn-food-elements_1159027.htm
-    background-position: center; 
-    background-size: cover;
-
+header {  
     h1 {
         text-align: center;
         text-transform: uppercase;
         background-color: $accentColor;
         color: $backgroundColor;
         font-weight: 600;
+        padding: 1rem 0;
+    }
+    .headerImage{
+        // https://www.freepik.com/vectors/colouring-book - Colouring book vector created by bimbimkha - www.freepik.com
+        background-image: url('../assets/backgroundImage.jpg'); 
+        background-position: center; 
+        background-size: cover;
+        height: 50vh;
     }
 }

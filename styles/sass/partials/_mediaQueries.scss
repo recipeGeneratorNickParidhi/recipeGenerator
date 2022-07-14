@@ -1,0 +1,13 @@
+@media (max-width: 720px) {
+    footer {
+        .footerContent {
+            flex-direction: column;
+            p {
+                padding-top: 1rem;
+                &:last-child {
+                    padding-bottom: 1rem;
+                }
+            }
+        }
+    }
+}

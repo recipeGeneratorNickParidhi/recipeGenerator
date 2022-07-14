@@ -7,17 +7,19 @@
     <link rel="stylesheet" href="./styles/style.css">
 	<link rel="preconnect" href="https://fonts.googleapis.com">
 	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <script src="https://kit.fontawesome.com/319714ae3d.js" crossorigin="anonymous"></script>
 	<link href="https://fonts.googleapis.com/css2?family=Arima:wght@400;600&display=swap" rel="stylesheet">
 </head>
 <body>
     <header>
         <h1>Recipe Generator</h1>
+        <div class="headerImage"></div>
     </header>
     <main>
         <section class="introDropdown">
             <div class="wrapper">
                 <p>Are you hungry and not sure what to cook? Need some inspiration for today's dinner?</p>
-                <p>Once you select a cuisine from the options below, we will randomly generate a recipe image and name</p>
+                <p>All you need to do is select a cuisine from the options below <br> and we will choose the dish for you!</p>
 
 				<form action="#">
 					<select name="cuisineSelect" id="cuisineSelect">
@@ -26,8 +28,6 @@
 					</select>
 				</form>
             </div>
-
-
         </section>
 
 
@@ -39,10 +39,10 @@
 
     </main>  
     <footer>
-        <div class="wrapper">
+        <div class="footerContent">
             <p>Created at Juno College</p>
             <p>API data from <a href="https://spoonacular.com/food-api">Spoonacular</a></p>
-            <!-- <p><a href="">GitHub link</a></p> -->
+            <p><a href="https://github.com/recipeGeneratorNickParidhi/recipeGenerator.git">GitHub Code</a></p>
         </div>
     </footer>
 </body>

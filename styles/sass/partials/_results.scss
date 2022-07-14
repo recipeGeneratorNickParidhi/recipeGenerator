@@ -1,0 +1,21 @@
+.results {
+    margin: 0 0 75px;
+    .wrapper {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+
+    }
+    h2 {
+        padding: 1rem 0;
+    }
+
+    .imgContainer {
+        display: flex;
+        justify-content: center;
+        // width: 290px;
+        // height: 230px;
+        box-shadow: 0 0 20px $accentColor;
+    }
+}

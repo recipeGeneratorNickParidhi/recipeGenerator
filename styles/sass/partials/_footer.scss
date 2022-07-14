@@ -1,20 +1,17 @@
 footer  {
-
     background-color: $accentColor;
-    height: 5vh;
     display: flex;
-
-    .wrapper {
+    .footerContent {
+        width: 100%;
         display: flex;
         justify-content: space-evenly;
         align-items: center;
-
         p {
             color: white;
-
+            padding: 1.2rem 0;
             a {
                 text-decoration: underline;
-
+                transition: 0.4s;
                 &:hover {
                     color: $secondaryColor;
                 }
