@@ -42,6 +42,15 @@ recipesApp.populateCuisineSelect = function (cuisinesArray){
     })
 }
 
+// Adding event listener to the select to listen for users selection and saving that to a variable
+recipesApp.userQuery = function(dropdownMenu){
+    dropdownMenu.addEventListener('change', function (event) {
+        event.preventDefault()
+        const selectedCusine = this.value
+        recipesApp.apiCall(selectedCusine)
+    })
+}
+
 // galleryApp.apiUrl = "https://api.unsplash.com/photos";
 // galleryApp.apiKey = "Qi9SDpY5MEDJMQvbKtLUlhrGYl4F5a_zSjRWn4e01z8";
 
@@ -61,25 +70,28 @@ recipesApp.populateCuisineSelect = function (cuisinesArray){
 //       galleryApp.displayPhotos(jsonResponse);
 //     })
 // }
-// Adding event listener to the select to listen for users selection and saving that to a variable
-recipesApp.select.addEventListener('change', function (event) {
-    event.preventDefault()
-    const selectedCusine = this.value
-    recipesApp.apiCall(selectedCusine)
-})
+
+
+recipesApp.apiUrl = "https://api.spoonacular.com/recipes/complexSearch/"
+recipesApp.apiKey = "74f35dea60504b57ae6e6936c084093f"
 
 
 
 // Making api call based on user selection
 recipesApp.apiCall = function (selectedCusine) {
-    fetch(`https://api.spoonacular.com/recipes/complexSearch?apiKey=74f35dea60504b57ae6e6936c084093f&cuisine=${selectedCusine}`)
+    const url = new URL(recipesApp.apiUrl);
+    url.search = new URLSearchParams ({
+        apiKey: recipesApp.apiKey,
+        cuisine: selectedCusine
+    })
+
+    fetch(url)
         .then(function (response) {
             return response.json();
         })
         .then(function (jsonData) {
             recipesApp.displaydata(jsonData)
         });
-
 }
 
 // Displaying data on page
@@ -94,22 +106,20 @@ recipesApp.displaydata = function (recipesData) {
 
     // Choosing random number between 0 and 9 to select from Array
     recipesApp.randomNumber = Math.floor(Math.random() * 10);
+    console.log(recipesApp.randomNumber);
 
     newHeading.textContent = recipesData.results[recipesApp.randomNumber].title;
     imageItem.src = recipesData.results[recipesApp.randomNumber].image;
     console.log(newHeading);
     console.log(imageItem);
-    outerDiv.innerHTML = `
-    <h2>${newHeading.textContent}</h2>
-    <div class="imgContainer"><img src=${imageItem.src}></div>
-    `
-    // outerDiv.appendChild(newHeading);
-    // outerDiv.appendChild(imageItem);
+    outerDiv.appendChild(newHeading);
+    outerDiv.appendChild(imageItem);
 
 }
 
 recipesApp.init = function(){
     recipesApp.populateCuisineSelect(recipesApp.cuisineOptions);
+    recipesApp.userQuery(recipesApp.select);
 }
 
 
