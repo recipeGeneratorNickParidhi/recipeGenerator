@@ -53,7 +53,7 @@ recipesApp.userQuery = function(dropdownMenu){
 
 
 recipesApp.apiUrl = "https://api.spoonacular.com/recipes/complexSearch/"
-recipesApp.apiKey = "fe85d898fb63487580be98fbc1b392f4"
+recipesApp.apiKey = "04fc501ca28f472fbe5d7a82c0688755"
 
 // Making api call based on user selection
 recipesApp.apiCall = function (selectedCusine) {
@@ -112,11 +112,18 @@ recipesApp.errorHandle = function () {
 
 }
 
+recipesApp.cardListener = function() {
+    const cardClick = document.querySelector('#cardHolder')
+    cardClick.addEventListener('click', function (event) {
+        const innerCard = document.querySelector('#cardHolderInner').classList.toggle('rotateCard');
+    })
+}
 // Init
 
 recipesApp.init = function(){
     recipesApp.populateCuisineSelect(recipesApp.cuisineOptions);
     recipesApp.userQuery(recipesApp.select);
+    recipesApp.cardListener();
 }
 // Call the init method to kickstart the app upon page load
 recipesApp.init();
