@@ -51,31 +51,9 @@ recipesApp.userQuery = function(dropdownMenu){
     })
 }
 
-// galleryApp.apiUrl = "https://api.unsplash.com/photos";
-// galleryApp.apiKey = "Qi9SDpY5MEDJMQvbKtLUlhrGYl4F5a_zSjRWn4e01z8";
-
-// create a method (AKA function on the app object) which requests information from the API
-// logs it to the console
-// galleryApp.getPhotos = function (){
-//   const url = new URL(galleryApp.apiUrl);
-//   url.search = new URLSearchParams({
-//     client_id: galleryApp.apiKey
-//   })
-//   fetch(url)
-//     .then((response) => {
-//       return response.json();
-//     })
-//     .then((jsonResponse) => {
-//       console.log(jsonResponse);
-//       galleryApp.displayPhotos(jsonResponse);
-//     })
-// }
-
 
 recipesApp.apiUrl = "https://api.spoonacular.com/recipes/complexSearch/"
 recipesApp.apiKey = "74f35dea60504b57ae6e6936c084093f"
-
-
 
 // Making api call based on user selection
 recipesApp.apiCall = function (selectedCusine) {
@@ -114,14 +92,11 @@ recipesApp.displaydata = function (recipesData) {
     console.log(imageItem);
     outerDiv.appendChild(newHeading);
     outerDiv.appendChild(imageItem);
-
 }
 
 recipesApp.init = function(){
     recipesApp.populateCuisineSelect(recipesApp.cuisineOptions);
     recipesApp.userQuery(recipesApp.select);
 }
-
-
 // Call the init method to kickstart the app upon page load
 recipesApp.init();
