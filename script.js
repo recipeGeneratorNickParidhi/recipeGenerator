@@ -145,10 +145,17 @@ recipesApp.errorHandle = function () {
 
 }
 
+recipesApp.cardListener = function() {
+    const cardClick = document.querySelector('#cardHolder')
+    cardClick.addEventListener('click', function (event) {
+        const innerCard = document.querySelector('#cardHolderInner').classList.toggle('rotateCard');
+    })
+}
 // Init
 recipesApp.init = function(){
     recipesApp.populateCuisineSelect(recipesApp.cuisineOptions);
     recipesApp.userQuery(recipesApp.select);
+    recipesApp.cardListener();
 }
 // Call the init method to kickstart the app upon page load
 recipesApp.init();
