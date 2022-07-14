@@ -47,22 +47,21 @@ recipesApp.userQuery = function(dropdownMenu){
     dropdownMenu.addEventListener('change', function (event) {
         event.preventDefault()
         const selectedCusine = this.value
-        recipesApp.apiCall(selectedCusine)
+        recipesApp.apiCallCuisine(selectedCusine)
     })
 }
 
 
-recipesApp.apiUrl = "https://api.spoonacular.com/recipes/complexSearch/"
-recipesApp.apiKey = "fe85d898fb63487580be98fbc1b392f4"
+recipesApp.apiKey = "4d0e3cee240e458897c51af84a206073"
 
-// Making api call based on user selection
-recipesApp.apiCall = function (selectedCusine) {
-    const url = new URL(recipesApp.apiUrl);
+// Making api call based on user's cuisine selection to return a dataset of 10 recipes
+recipesApp.apiCallCuisine = function (selectedCusine) {
+    const apiUrl = "https://api.spoonacular.com/recipes/complexSearch/"
+    const url = new URL(apiUrl);
     url.search = new URLSearchParams ({
         apiKey: recipesApp.apiKey,
-        cuisine: selectedCusine
-    })
-
+        cuisine: selectedCusine,
+    });
     fetch(url)
         .then(function (response) {
         if (response.ok) {
@@ -71,34 +70,68 @@ recipesApp.apiCall = function (selectedCusine) {
             throw new Error();
         }
         })
-        .then(function (jsonData) {
-            recipesApp.displaydata(jsonData)
+            .then(function (jsonData) {
+            recipesApp.apiCallRecipe(jsonData)
         })
-        .catch(function (error) {
-            recipesApp.errorHandle()
+            .catch(function (error) {
+            recipesApp.errorHandle();
         })
 }
 
-// Displaying data on page
-recipesApp.displaydata = function (recipesData) {
+// method to make a seperate API call based selecting a random recipe and using the ID to get ingredients and information
+recipesApp.apiCallRecipe = function (cuisineArray) {
 
+    // choosing a random recipe from the object
+    const randomNumber = Math.floor(Math.random() * 10);
+    const recipeId = cuisineArray.results[randomNumber].id;
+    
+    const apiUrl = `https://api.spoonacular.com/recipes/${recipeId}/information`
+    const url = new URL(apiUrl);
+    url.search = new URLSearchParams ({
+        apiKey: recipesApp.apiKey,
+        fillIngredients: true
+    });
+    fetch(url)
+    .then(function (response) {
+        if (response.ok) {
+            return response.json();
+        } else {
+            throw new Error();
+        }
+    })
+    .then(function (jsonData) {
+            console.log(jsonData);
+            recipesApp.displaydata(jsonData);
+        })
+        .catch(function (error) {
+            recipesApp.errorHandle();
+        })
+}
+
+// Displaying data on page from recipesApp.apiCallRecipe on page
+recipesApp.displaydata = function (recipesData) {
+    // console.log(recipesData);
     const outerDiv = document.querySelector('#recipeResult');
     const newHeading = document.createElement('h2');
     const imageItem = document.createElement('img');
+    const articleItem = document.createElement("article");
+    const listItem = document.createElement("li");
 
     // Clearing Div so new recipe can be displayed
     outerDiv.innerHTML = '';
-
-    // Choosing random number between 0 and 9 to select from Array
-    recipesApp.randomNumber = Math.floor(Math.random() * 10);
-
-    newHeading.textContent = recipesData.results[recipesApp.randomNumber].title;
-    imageItem.src = recipesData.results[recipesApp.randomNumber].image;
-
+    // assigning the information from the object to HTML
+    newHeading.textContent = recipesData.title;
+    imageItem.src = recipesData.image;
+    articleItem.textContent = recipesData.instructions
+    // Appending and formatting everything
     outerDiv.innerHTML = `
     <h2>${newHeading.textContent}</h2>
     <div class="imgContainer"><img src=${imageItem.src}></div>
-    `
+    <article class="recipeInfo">${articleItem.textContent}</article>
+    `;
+
+    // <article class="recipeSummary">${articleItem.textContent}</article>
+    
 }
 
 // Error Handling no response from API
@@ -113,7 +146,6 @@ recipesApp.errorHandle = function () {
 }
 
 // Init
-
 recipesApp.init = function(){
     recipesApp.populateCuisineSelect(recipesApp.cuisineOptions);
     recipesApp.userQuery(recipesApp.select);
