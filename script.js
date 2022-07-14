@@ -79,6 +79,8 @@ recipesApp.apiCall = function (selectedCusine) {
         })
 }
 
+// function for recipe
+
 // Displaying data on page
 recipesApp.displaydata = function (recipesData) {
 
