@@ -108,6 +108,9 @@ recipesApp.apiCallRecipe = function (cuisineArray) {
         })
 }
 
+// Variable holding display card
+recipesApp.cardClick = document.querySelector('#cardHolder')
+
 // Displaying data on page from recipesApp.apiCallRecipe on page
 recipesApp.displaydata = function (recipesData) {
     // console.log(recipesData);
@@ -127,11 +130,12 @@ recipesApp.displaydata = function (recipesData) {
     outerDiv.innerHTML = `
     <h2>${newHeading.textContent}</h2>
     <div class="imgContainer"><img src=${imageItem.src}></div>
-    <article class="recipeInfo">${articleItem.textContent}</article>
     `;
 
     // <article class="recipeSummary">${articleItem.textContent}</article>
-    
+
+    // Displaying card on API completion
+    recipesApp.cardClick.style.display = 'block';
 }
 
 // Error Handling no response from API
@@ -146,8 +150,7 @@ recipesApp.errorHandle = function () {
 }
 
 recipesApp.cardListener = function() {
-    const cardClick = document.querySelector('#cardHolder')
-    cardClick.addEventListener('click', function (event) {
+    recipesApp.cardClick.addEventListener('click', function (event) {
         const innerCard = document.querySelector('#cardHolderInner').classList.toggle('rotateCard');
     })
 }
