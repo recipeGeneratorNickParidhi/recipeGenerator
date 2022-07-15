@@ -30,8 +30,10 @@ recipesApp.cuisineOptions = [
     "Thai",
     "Vietnamese",
 ]
-// Querying Select from HTML and saving as variable
+// Querying global variables from HTML and saving as variable
 recipesApp.select = document.querySelector('select')
+recipesApp.cardClick = document.querySelector('#cardHolder')
+
 // Defining a method to populate the dropdown menu
 recipesApp.populateCuisineSelect = function (cuisinesArray){
     // using a forEach loop to populate the select
@@ -52,7 +54,7 @@ recipesApp.userQuery = function(dropdownMenu){
     })
 }
 
-recipesApp.apiKey = "84f93165fbed4c7eb646db9a3df0c69e"
+recipesApp.apiKey = "feb72c00c13a445b8a1a2dbb2e3b7f59"
 
 // Making api call based on user's cuisine selection to return an object of 10 recipes
 recipesApp.apiCallCuisine = function (selectedCusine) {
@@ -102,6 +104,7 @@ recipesApp.apiCallRecipe = function (cuisineArray) {
             console.log(jsonData);
             recipesApp.displayIngredients(jsonData);
             recipesApp.displaydata(jsonData);
+            recipesApp.cardClick.style.display = 'block';
         })
         .catch(function (error) {
             recipesApp.errorHandle();
