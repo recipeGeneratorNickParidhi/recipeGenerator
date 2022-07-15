@@ -100,8 +100,8 @@ recipesApp.apiCallRecipe = function (cuisineArray) {
     })
     .then(function (jsonData) {
             console.log(jsonData);
+            recipesApp.displayIngredients(jsonData);
             recipesApp.displaydata(jsonData);
-            recipesApp.getIngredients(jsonData);
         })
         .catch(function (error) {
             recipesApp.errorHandle();
@@ -109,15 +109,17 @@ recipesApp.apiCallRecipe = function (cuisineArray) {
 }
 
 // Defining a method to get the randomly selected recipe and return the ingredients list
-recipesApp.getIngredients = function(recipesData) {
-        // const listItem = document.createElement("li");
+recipesApp.displayIngredients = function(recipesData) {
+    const ulItem = document.querySelector("#ingredientsList");
     const ingredientsArray = recipesData.extendedIngredients;
     console.log(ingredientsArray);
-    ingredientsArray.forEach( ingredientObject => {
-        const ingredientName = ingredientObject.original;
-        const liIngredientList = `<li>${ingredientName}</li>`
-        console.log(liIngredientList);
-        // recipesApp.displaydata(liIngredientList);
+    ingredientsArray.forEach( ingredientObj => {
+        console.log(ingredientObj.original);
+        const listItem = document.createElement("li");
+        listItem.textContent = ingredientObj.original;
+        ulItem.appendChild(listItem);
+        console.log(listItem.textContent);
+
     });
 }
 
@@ -126,8 +128,6 @@ recipesApp.displaydata = function (recipesData) {
     // console.log(recipesData);
     const outerDiv = document.querySelector('#recipeResult');
     const recipeInstructionsDiv = document.querySelector("#recipeInstructions");
-    const recipeCardBack = document.queryCommandIndeterm("#recipeCardBack")
-    const ulItem = document.createElement("ul");
     const newHeading = document.createElement('h2');
     const imageItem = document.createElement('img');
     const articleItem = document.createElement("article");
@@ -138,11 +138,14 @@ recipesApp.displaydata = function (recipesData) {
     imageItem.src = recipesData.image;
     articleItem.textContent = recipesData.instructions
       // Appending and formatting everything
-      outerDiv.innerHTML = `
-      <h2>${newHeading.textContent}</h2>
-      <div class="imgContainer"><img src=${imageItem.src}></div>`
-      recipeInstructionsDiv.innerHTML = 
-      `<article class="recipeInfo">${articleItem.textContent}</article>`;
+    outerDiv.innerHTML = `
+    <h2>${newHeading.textContent}</h2>
+    <div class="imgContainer"><img src=${imageItem.src}></div>`
+    recipeInstructionsDiv.innerHTML = 
+    `<article class="recipeInfo">${articleItem.textContent}</article>
+    <p class="recipeLink">  For the original recipe, click the link 
+    <a href="${recipesData.sourceUrl}">here</a> `;
+
 }
 
 // Error Handling no response from API

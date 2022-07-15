@@ -237,6 +237,7 @@ body {
 h1,
 h2,
 h3,
+ol,
 ul,
 li,
 a,
@@ -406,6 +407,17 @@ main {
 }
 .results .wrapper .recipeInstructions {
   text-align: left;
+}
+.results .wrapper .recipeInstructions .recipeLink {
+  padding-top: 1rem;
+}
+.results .wrapper .recipeInstructions .recipeLink a {
+  text-decoration: underline;
+  -webkit-transition: color 0.4s;
+  transition: color 0.4s;
+}
+.results .wrapper .recipeInstructions .recipeLink a:hover {
+  color: #003391;
 }
 
 .rotateCard {
