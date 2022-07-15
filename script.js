@@ -128,8 +128,8 @@ recipesApp.displaydata = function (recipesData) {
     articleItem.textContent = recipesData.instructions
     // Appending and formatting everything
     outerDiv.innerHTML = `
-    <h2>${newHeading.textContent}</h2>
     <div class="imgContainer"><img src=${imageItem.src}></div>
+    <h2>${newHeading.textContent}</h2>
     `;
 
     // <article class="recipeSummary">${articleItem.textContent}</article>
