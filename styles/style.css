@@ -342,8 +342,9 @@ main {
   display: none;
   -webkit-perspective: 40rem;
           perspective: 40rem;
-  width: 50%;
+  max-width: 556px;
   margin: 0 auto;
+  cursor: pointer;
 }
 .results .wrapper .cardHolder .cardHolderInner {
   display: -webkit-box;
@@ -370,11 +371,13 @@ main {
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
-  background-color: red;
-  padding: 50px;
+  background-color: #43AA8B;
+  -webkit-box-shadow: rgba(0, 0, 0, 0.25) 0px 15px 25px, rgba(0, 0, 0, 0.25) 0px 10px 10px;
+          box-shadow: rgba(0, 0, 0, 0.25) 0px 15px 25px, rgba(0, 0, 0, 0.25) 0px 10px 10px;
 }
 .results .wrapper .cardHolder .cardHolderInner .recipeCardFront h2 {
   padding: 1rem 0;
+  color: white;
 }
 .results .wrapper .cardHolder .cardHolderInner .recipeCardFront .imgContainer {
   display: -webkit-box;
@@ -383,8 +386,57 @@ main {
   -webkit-box-pack: center;
       -ms-flex-pack: center;
           justify-content: center;
-  -webkit-box-shadow: 0 0 20px #43AA8B;
-          box-shadow: 0 0 20px #43AA8B;
+}
+.results .wrapper .cardHolder .cardHolderInner .recipeCardFront .cookingTimeServings {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: space-evenly;
+      -ms-flex-pack: space-evenly;
+          justify-content: space-evenly;
+  width: 100%;
+  padding-bottom: 25px;
+}
+.results .wrapper .cardHolder .cardHolderInner .recipeCardFront .cookingTimeServings .cookTime {
+  color: white;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  line-height: 1.4rem;
+}
+.results .wrapper .cardHolder .cardHolderInner .recipeCardFront .cookingTimeServings .servings {
+  color: white;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  line-height: 1.4rem;
+}
+.results .wrapper .cardHolder .cardHolderInner .recipeCardFront .ingredientsButton {
+  background-color: #AA4362;
+  font-family: "Arima", cursive;
+  width: -webkit-fit-content;
+  width: -moz-fit-content;
+  width: fit-content;
+  padding: 15px 25px;
+  font-size: 1rem;
+  color: white;
+  -webkit-transition: 0.3s;
+  transition: 0.3s;
+  border: none;
+  margin-bottom: 20px;
+}
+.results .wrapper .cardHolder .cardHolderInner .recipeCardFront .ingredientsButton:hover {
+  background-color: #5743AA;
+  -webkit-transform: scale(1.1);
+          transform: scale(1.1);
 }
 .results .wrapper .cardHolder .cardHolderInner .recipeCardBack {
   min-width: 100%;
@@ -402,9 +454,54 @@ main {
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
-  background-color: green;
+  background-color: #43AA8B;
+  -webkit-box-shadow: rgba(0, 0, 0, 0.25) 0px 15px 25px, rgba(0, 0, 0, 0.25) 0px 10px 10px;
+          box-shadow: rgba(0, 0, 0, 0.25) 0px 15px 25px, rgba(0, 0, 0, 0.25) 0px 10px 10px;
+}
+.results .wrapper .cardHolder .cardHolderInner .recipeCardBack h2 {
+  padding: 1rem 0;
+  color: white;
+}
+.results .wrapper .cardHolder .cardHolderInner .recipeCardBack .ingredientsPlusButton {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  height: 100%;
+}
+.results .wrapper .cardHolder .cardHolderInner .recipeCardBack .ingredientsPlusButton ul li {
+  color: white;
+}
+.results .wrapper .cardHolder .cardHolderInner .recipeCardBack .ingredientsPlusButton .frontOfCardButton {
+  background-color: #AA4362;
+  font-family: "Arima", cursive;
+  width: -webkit-fit-content;
+  width: -moz-fit-content;
+  width: fit-content;
+  padding: 15px 25px;
+  font-size: 1rem;
+  color: white;
+  -webkit-transition: 0.3s;
+  transition: 0.3s;
+  border: none;
+  margin-bottom: 20px;
+}
+.results .wrapper .cardHolder .cardHolderInner .recipeCardBack .ingredientsPlusButton .frontOfCardButton:hover {
+  background-color: #5743AA;
+  -webkit-transform: scale(1.1);
+          transform: scale(1.1);
 }
 .results .wrapper .recipeInstructions {
+  margin-top: 25px;
   text-align: left;
 }
 .results .wrapper .recipeInstructions .recipeLink {

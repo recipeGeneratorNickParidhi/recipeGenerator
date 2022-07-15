@@ -6,8 +6,9 @@
         .cardHolder {
             display: none;
             perspective: 40rem;
-            width: 50%;
+            max-width: 556px;
             margin: 0 auto;
+            cursor: pointer;
 
             .cardHolderInner {
                     display: flex;
@@ -20,18 +21,56 @@
                         display: flex;
                         flex-direction: column;
                         align-items: center;
-                        background-color: red;
-                        padding: 50px;
+                        background-color: $accentColor;
+                        box-shadow: rgba(0, 0, 0, 0.25) 0px 15px 25px, rgba(0, 0, 0, 0.25) 0px 10px 10px;
+                        // Generated at https: //cssgenerator.org/box-shadow-css-generator.html
 
             
                         h2 {
                             padding: 1rem 0;
+                            color: white;
                         }
             
                         .imgContainer {
                             display: flex;
                             justify-content: center;
-                            box-shadow: 0 0 20px $accentColor;
+                        }
+
+                        .cookingTimeServings {
+                            display: flex;
+                            justify-content: space-evenly;
+                            width: 100%;
+                            padding-bottom: 25px;
+
+                            .cookTime {
+                                color: white;
+                                display: flex;
+                                flex-direction: column;
+                                line-height: 1.4rem;
+                            }
+                            .servings {
+                                color: white;
+                                display: flex;
+                                flex-direction: column;
+                                line-height: 1.4rem;
+                            }
+                        }
+
+                        .ingredientsButton {
+                            background-color: $tertiaryColor;
+                            font-family: $font;
+                            width: fit-content;
+                            padding: 15px 25px;
+                            font-size: 1rem;
+                            color: white;
+                            transition: 0.3s;
+                            border: none;
+                            margin-bottom: 20px;
+
+                            &:hover {
+                                background-color: $fourthColor;
+                                transform: scale(1.1);
+                            }
                         }
                     }
             
@@ -42,13 +81,52 @@
                         display: flex;
                         flex-direction: column;
                         align-items: center;
-                        background-color: green;
+                        background-color: $accentColor;
+                        box-shadow: rgba(0, 0, 0, 0.25) 0px 15px 25px, rgba(0, 0, 0, 0.25) 0px 10px 10px;
+
+                        h2 {
+                            padding: 1rem 0;
+                            color: white;
+                            }
+                        .ingredientsPlusButton {
+                            display: flex;
+                            flex-direction: column;
+                            justify-content: space-between;
+                            align-items: center;
+                            height: 100%;
+
+                            ul {
+                            
+                                li {
+                                    color: white;
+                                }
+                            }
+                        
+                            .frontOfCardButton {
+                                background-color: $tertiaryColor;
+                                font-family: $font;
+                                width: fit-content;
+                                padding: 15px 25px;
+                                font-size: 1rem;
+                                color: white;
+                                transition: 0.3s;
+                                border: none;
+                                margin-bottom: 20px;
+                        
+                                &:hover {
+                                    background-color: $fourthColor;
+                                    transform: scale(1.1);
+                                }
+                            }
+                        }
+
                     }
             
                 }
 
         }
         .recipeInstructions {
+            margin-top: 25px;
             text-align: left;
             .recipeLink {
                 padding-top: 1rem;
