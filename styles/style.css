@@ -338,7 +338,28 @@ main {
 .results {
   margin: 0 0 75px;
 }
-.results .wrapper {
+.results .wrapper .cardHolder {
+  display: none;
+  -webkit-perspective: 40rem;
+          perspective: 40rem;
+  width: 50%;
+  margin: 0 auto;
+}
+.results .wrapper .cardHolder .cardHolderInner {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-transform-style: preserve-3d;
+          transform-style: preserve-3d;
+  -webkit-transition: -webkit-transform 0.8s;
+  transition: -webkit-transform 0.8s;
+  transition: transform 0.8s;
+  transition: transform 0.8s, -webkit-transform 0.8s;
+}
+.results .wrapper .cardHolder .cardHolderInner .recipeCardFront {
+  min-width: 100%;
+  -webkit-backface-visibility: hidden;
+          backface-visibility: hidden;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -346,40 +367,11 @@ main {
   -webkit-box-direction: normal;
       -ms-flex-direction: column;
           flex-direction: column;
-  -webkit-box-pack: center;
-      -ms-flex-pack: center;
-          justify-content: center;
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
-}
-.results .wrapper .cardHolder {
-  background-color: transparent;
-  width: 300px;
-  height: 200px;
-  border: 1px solid #f1f1f1;
-  -webkit-perspective: 1000px;
-          perspective: 1000px;
-  /* Remove this if you don't want the 3D effect */
-}
-.results .wrapper .cardHolder .cardHolderInner {
-  position: relative;
-  width: 100%;
-  height: 100%;
-  text-align: center;
-  -webkit-transition: -webkit-transform 0.8s;
-  transition: -webkit-transform 0.8s;
-  transition: transform 0.8s;
-  transition: transform 0.8s, -webkit-transform 0.8s;
-  -webkit-transform-style: preserve-3d;
-          transform-style: preserve-3d;
-}
-.results .wrapper .cardHolder .cardHolderInner .recipeCardFront {
-  position: absolute;
-  width: 100%;
-  -webkit-backface-visibility: hidden;
-          backface-visibility: hidden;
   background-color: red;
+  padding: 50px;
 }
 .results .wrapper .cardHolder .cardHolderInner .recipeCardFront h2 {
   padding: 1rem 0;
@@ -395,15 +387,22 @@ main {
           box-shadow: 0 0 20px #43AA8B;
 }
 .results .wrapper .cardHolder .cardHolderInner .recipeCardBack {
-  position: absolute;
-  width: 100%;
-  height: 100%;
+  min-width: 100%;
   -webkit-backface-visibility: hidden;
           backface-visibility: hidden;
-  background-color: dodgerblue;
-  color: white;
-  -webkit-transform: rotateY(180deg);
-          transform: rotateY(180deg);
+  -webkit-transform: rotateX(-180deg) translate(-100%, 0);
+          transform: rotateX(-180deg) translate(-100%, 0);
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  background-color: green;
 }
 .results .wrapper .recipeInstructions {
   text-align: left;
@@ -421,8 +420,8 @@ main {
 }
 
 .rotateCard {
-  -webkit-transform: rotateY(180deg);
-          transform: rotateY(180deg);
+  -webkit-transform: rotateX(-180deg);
+          transform: rotateX(-180deg);
 }
 
 @media (max-width: 720px) {
