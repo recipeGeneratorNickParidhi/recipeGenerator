@@ -80,7 +80,7 @@ recipesApp.apiCallCuisine = function (selectedCusine) {
 
 // method to make a seperate API call based selecting a random recipe and using the ID to get ingredients and information
 recipesApp.apiCallRecipe = function (cuisineArray) {
-
+// need to also add ingredients info
     // choosing a random recipe from the object
     const randomNumber = Math.floor(Math.random() * 10);
     const recipeId = cuisineArray.results[randomNumber].id;
