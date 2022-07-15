@@ -101,7 +101,6 @@ recipesApp.apiCallRecipe = function (cuisineArray) {
         }
     })
     .then(function (jsonData) {
-            console.log(jsonData);
             recipesApp.displayIngredients(jsonData);
             recipesApp.displaydata(jsonData);
             recipesApp.cardClick.style.display = 'block';
@@ -115,20 +114,17 @@ recipesApp.apiCallRecipe = function (cuisineArray) {
 recipesApp.displayIngredients = function(recipesData) {
     const ulItem = document.querySelector("#ingredientsList");
     const ingredientsArray = recipesData.extendedIngredients;
-    console.log(ingredientsArray);
     ingredientsArray.forEach( ingredientObj => {
-        console.log(ingredientObj.original);
         const listItem = document.createElement("li");
         listItem.textContent = ingredientObj.original;
         ulItem.appendChild(listItem);
-        console.log(listItem.textContent);
 
     });
 }
 
 // Displaying data on page from recipesApp.apiCallRecipe on page
 recipesApp.displaydata = function (recipesData) {
-    // console.log(recipesData);
+    console.log(recipesData);
     const outerDiv = document.querySelector('#recipeResult');
     const recipeInstructionsDiv = document.querySelector("#recipeInstructions");
     const newHeading = document.createElement('h2');
@@ -139,11 +135,18 @@ recipesApp.displaydata = function (recipesData) {
     // assigning the information from the object to HTML
     newHeading.textContent = recipesData.title;
     imageItem.src = recipesData.image;
-    articleItem.textContent = recipesData.instructions
+    articleItem.textContent = recipesData.instructions;
       // Appending and formatting everything
     outerDiv.innerHTML = `
+    <div class="imgContainer"><img src=${imageItem.src}></div>
     <h2>${newHeading.textContent}</h2>
-    <div class="imgContainer"><img src=${imageItem.src}></div>`
+    <div class="cookingTimeServings">
+        <div class="cookTime"><i class="fa-regular fa-clock"></i>Cook Time<p>${recipesData.readyInMinutes} mins</p></div>
+        <div class="servings"><i class="fa-regular fa-user"></i>Serves<p>${recipesData.servings}</p></div>
+    </div>
+    <button class="ingredientsButton" id="ingredientsButton">Ingredients</button>
+    `;
+
     recipeInstructionsDiv.innerHTML = 
     `<article class="recipeInfo">${articleItem.textContent}</article>
     <p class="recipeLink">  For the original recipe, click the link 
