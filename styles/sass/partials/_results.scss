@@ -56,7 +56,19 @@
                 }
 
         }
-
+        .recipeInstructions {
+            text-align: left;
+            .recipeLink {
+                padding-top: 1rem;
+                a {
+                    text-decoration: underline;
+                    transition: color 0.4s;
+                    &:hover {
+                        color: $secondaryColor;
+                    }
+                }
+            }
+        }
 
     }
 
