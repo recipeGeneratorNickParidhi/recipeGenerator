@@ -32,6 +32,7 @@ recipesApp.cuisineOptions = [
 ]
 // Querying Select from HTML and saving as variable
 recipesApp.select = document.querySelector('select')
+// Defining a method to populate the dropdown menu
 recipesApp.populateCuisineSelect = function (cuisinesArray){
     // using a forEach loop to populate the select
     cuisinesArray.forEach((option) => {
@@ -42,7 +43,7 @@ recipesApp.populateCuisineSelect = function (cuisinesArray){
     })
 }
 
-// Adding event listener to the select to listen for users selection and saving that to a variable
+// Adding event listener to the SELECT to listen for users selection and calling an API call method
 recipesApp.userQuery = function(dropdownMenu){
     dropdownMenu.addEventListener('change', function (event) {
         event.preventDefault()
@@ -51,10 +52,9 @@ recipesApp.userQuery = function(dropdownMenu){
     })
 }
 
+recipesApp.apiKey = "84f93165fbed4c7eb646db9a3df0c69e"
 
-recipesApp.apiKey = "4d0e3cee240e458897c51af84a206073"
-
-// Making api call based on user's cuisine selection to return a dataset of 10 recipes
+// Making api call based on user's cuisine selection to return an object of 10 recipes
 recipesApp.apiCallCuisine = function (selectedCusine) {
     const apiUrl = "https://api.spoonacular.com/recipes/complexSearch/"
     const url = new URL(apiUrl);
@@ -78,9 +78,8 @@ recipesApp.apiCallCuisine = function (selectedCusine) {
         })
 }
 
-// method to make a seperate API call based selecting a random recipe and using the ID to get ingredients and information
+// method to make a seperate API call based after running a randomizer and using the ID to get ingredients and instructions
 recipesApp.apiCallRecipe = function (cuisineArray) {
-
     // choosing a random recipe from the object
     const randomNumber = Math.floor(Math.random() * 10);
     const recipeId = cuisineArray.results[randomNumber].id;
@@ -101,6 +100,7 @@ recipesApp.apiCallRecipe = function (cuisineArray) {
     })
     .then(function (jsonData) {
             console.log(jsonData);
+            recipesApp.displayIngredients(jsonData);
             recipesApp.displaydata(jsonData);
         })
         .catch(function (error) {
@@ -108,34 +108,44 @@ recipesApp.apiCallRecipe = function (cuisineArray) {
         })
 }
 
-// Variable holding display card
-recipesApp.cardClick = document.querySelector('#cardHolder')
+// Defining a method to get the randomly selected recipe and return the ingredients list
+recipesApp.displayIngredients = function(recipesData) {
+    const ulItem = document.querySelector("#ingredientsList");
+    const ingredientsArray = recipesData.extendedIngredients;
+    console.log(ingredientsArray);
+    ingredientsArray.forEach( ingredientObj => {
+        console.log(ingredientObj.original);
+        const listItem = document.createElement("li");
+        listItem.textContent = ingredientObj.original;
+        ulItem.appendChild(listItem);
+        console.log(listItem.textContent);
+
+    });
+}
 
 // Displaying data on page from recipesApp.apiCallRecipe on page
 recipesApp.displaydata = function (recipesData) {
     // console.log(recipesData);
     const outerDiv = document.querySelector('#recipeResult');
+    const recipeInstructionsDiv = document.querySelector("#recipeInstructions");
     const newHeading = document.createElement('h2');
     const imageItem = document.createElement('img');
     const articleItem = document.createElement("article");
-    const listItem = document.createElement("li");
-
     // Clearing Div so new recipe can be displayed
     outerDiv.innerHTML = '';
     // assigning the information from the object to HTML
     newHeading.textContent = recipesData.title;
     imageItem.src = recipesData.image;
     articleItem.textContent = recipesData.instructions
-    // Appending and formatting everything
+      // Appending and formatting everything
     outerDiv.innerHTML = `
-    <div class="imgContainer"><img src=${imageItem.src}></div>
     <h2>${newHeading.textContent}</h2>
-    `;
+    <div class="imgContainer"><img src=${imageItem.src}></div>`
+    recipeInstructionsDiv.innerHTML = 
+    `<article class="recipeInfo">${articleItem.textContent}</article>
+    <p class="recipeLink">  For the original recipe, click the link 
+    <a href="${recipesData.sourceUrl}">here</a> `;
 
-    // <article class="recipeSummary">${articleItem.textContent}</article>
-
-    // Displaying card on API completion
-    recipesApp.cardClick.style.display = 'block';
 }
 
 // Error Handling no response from API
