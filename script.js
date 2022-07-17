@@ -29,10 +29,11 @@ recipesApp.cuisineOptions = [
     "Spanish",
     "Thai",
     "Vietnamese",
-]
+];
 // Querying global variables from HTML and saving as variable
-recipesApp.select = document.querySelector('select')
-recipesApp.cardClick = document.querySelector('#cardHolder')
+recipesApp.select = document.querySelector('select');
+recipesApp.cardClick = document.querySelector('#cardHolder');
+recipesApp.recipeSearch = document.querySelector('#recipeSearchForm');
 
 // Defining a method to populate the dropdown menu
 recipesApp.populateCuisineSelect = function (cuisinesArray){
@@ -48,21 +49,57 @@ recipesApp.populateCuisineSelect = function (cuisinesArray){
 // Adding event listener to the SELECT to listen for users selection and calling an API call method
 recipesApp.userQuery = function(dropdownMenu){
     dropdownMenu.addEventListener('change', function (event) {
-        event.preventDefault()
-        const selectedCusine = this.value
-        recipesApp.apiCallCuisine(selectedCusine)
+        event.preventDefault();
+        const selectedCuisine = this.value;
+        recipesApp.apiCallCuisine(selectedCuisine);
+    })
+}
+
+// Adding event listener to the input to listen to users selection and calling API
+
+recipesApp.userSearch = function(searchInput) {
+    searchInput.addEventListener('submit', function(event) {
+        event.preventDefault();
+        const searchItem = document.querySelector('#recipeSearch');
+        recipesApp.apiCallSearch(searchItem.value);
+        searchItem.value = '';
     })
 }
 
 recipesApp.apiKey = "feb72c00c13a445b8a1a2dbb2e3b7f59"
 
+// Making api call to autocomplete endpoint based on user's search
+
+recipesApp.apiCallSearch = function(searchedRecipe) {
+    const apiUrl = "https://api.spoonacular.com/recipes/autocomplete";
+    const url = new URL(apiUrl);
+    url.search = new URLSearchParams({
+        apiKey: recipesApp.apiKey,
+        query: searchedRecipe,
+    });
+    fetch(url)
+        .then(function (response) {
+            if (response.ok) {
+                return response.json();
+            } else {
+                throw new Error();
+            }
+        })
+        .then(function (jsonData) {
+            recipesApp.apiCallRecipe(jsonData[0].id);
+        })
+        .catch(function (error) {
+            recipesApp.errorHandle();
+        })    
+}
+
 // Making api call based on user's cuisine selection to return an object of 10 recipes
-recipesApp.apiCallCuisine = function (selectedCusine) {
-    const apiUrl = "https://api.spoonacular.com/recipes/complexSearch/"
+recipesApp.apiCallCuisine = function (selectedCuisine) {
+    const apiUrl = "https://api.spoonacular.com/recipes/complexSearch/";
     const url = new URL(apiUrl);
     url.search = new URLSearchParams ({
         apiKey: recipesApp.apiKey,
-        cuisine: selectedCusine,
+        cuisine: selectedCuisine,
     });
     fetch(url)
         .then(function (response) {
@@ -72,21 +109,25 @@ recipesApp.apiCallCuisine = function (selectedCusine) {
             throw new Error();
         }
         })
-            .then(function (jsonData) {
-            recipesApp.apiCallRecipe(jsonData)
+        .then(function (jsonData) {
+            recipesApp.randomizer(jsonData);
         })
-            .catch(function (error) {
+        .catch(function (error) {
             recipesApp.errorHandle();
         })
 }
 
-// method to make a seperate API call based after running a randomizer and using the ID to get ingredients and instructions
-recipesApp.apiCallRecipe = function (cuisineArray) {
-    // choosing a random recipe from the object
+// choosing a random recipe from the object
+recipesApp.randomizer = function (cuisineArray){
     const randomNumber = Math.floor(Math.random() * 10);
     const recipeId = cuisineArray.results[randomNumber].id;
+    recipesApp.apiCallRecipe(recipeId)
+}
+
+// method to make a seperate API call based after running a randomizer and using the ID to get ingredients and instructions
+recipesApp.apiCallRecipe = function (recipeIdNumber) {
     
-    const apiUrl = `https://api.spoonacular.com/recipes/${recipeId}/information`
+    const apiUrl = `https://api.spoonacular.com/recipes/${recipeIdNumber}/information`
     const url = new URL(apiUrl);
     url.search = new URLSearchParams ({
         apiKey: recipesApp.apiKey,
@@ -113,6 +154,7 @@ recipesApp.apiCallRecipe = function (cuisineArray) {
 // Defining a method to get the randomly selected recipe and return the ingredients list
 recipesApp.displayIngredients = function(recipesData) {
     const ulItem = document.querySelector("#ingredientsList");
+    ulItem.innerHTML = '';
     const ingredientsArray = recipesData.extendedIngredients;
     ingredientsArray.forEach( ingredientObj => {
         const listItem = document.createElement("li");
@@ -124,7 +166,6 @@ recipesApp.displayIngredients = function(recipesData) {
 
 // Displaying data on page from recipesApp.apiCallRecipe on page
 recipesApp.displaydata = function (recipesData) {
-    console.log(recipesData);
     const outerDiv = document.querySelector('#recipeResult');
     const recipeInstructionsDiv = document.querySelector("#recipeInstructions");
     const newHeading = document.createElement('h2');
@@ -158,6 +199,8 @@ recipesApp.displaydata = function (recipesData) {
 recipesApp.errorHandle = function () {
     const outerDiv = document.querySelector('#recipeResult');
     outerDiv.innerHTML = '';
+    const ulItem = document.querySelector("#ingredientsList");
+    ulItem.innerHTML = '';
     const newHeading = document.createElement('h2');
     newHeading.textContent = 'Sorry - No Recipes match that selection. Please select again';
     outerDiv.appendChild(newHeading);
@@ -175,6 +218,7 @@ recipesApp.init = function(){
     recipesApp.populateCuisineSelect(recipesApp.cuisineOptions);
     recipesApp.userQuery(recipesApp.select);
     recipesApp.cardListener();
+    recipesApp.userSearch(recipesApp.recipeSearch);
 }
 // Call the init method to kickstart the app upon page load
 recipesApp.init();
