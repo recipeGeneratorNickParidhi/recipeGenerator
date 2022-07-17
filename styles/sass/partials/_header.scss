@@ -1,11 +1,34 @@
 header {  
-    h1 {
-        text-align: center;
-        text-transform: uppercase;
+    .headerNav{
         background-color: $accentColor;
         color: $backgroundColor;
-        font-weight: 600;
-        padding: 1rem 0;
+        display: flex;
+        justify-content: space-between;
+
+        h1 {
+            text-align: center;
+            text-transform: uppercase;
+            font-weight: 600;
+            padding: 1rem 0 1rem 2rem;
+        }
+        nav {
+            display: flex;
+            align-items: center;
+            ul {
+                display: flex;
+                padding-right: 1rem;
+                li {
+                    a {
+                        padding: 1rem;
+                        text-transform: uppercase;
+                        transition: 0.4s;
+                        &:hover, &:focus {
+                            color: $secondaryColor;
+                        }
+                    }
+                }
+            }
+        }
     }
     .headerImage{
         // https://www.freepik.com/vectors/colouring-book - Colouring book vector created by bimbimkha - www.freepik.com
