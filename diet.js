@@ -5,14 +5,14 @@ recipesApp = {};
 recipesApp.dietOptions = [
     "Gluten Free",
     "Ketogenic",
-    "Vegetarian",
     "Lacto-Vegetarian",
+    "Low FODMAP",
     "Ovo-Vegetarian",
     "Vegan",
     "Pescetarian",
     "Paleo",
     "Primal",
-    "Low FODMAP",
+    "Vegetarian",
     "Whole30"
 ];
 // Querying global variables from HTML and saving as variable
@@ -153,8 +153,33 @@ recipesApp.errorHandle = function () {
     newHeading.textContent = 'Sorry - No Recipes match that selection. Please select again';
     outerDiv.appendChild(newHeading);
     // add a function here for a random joke when error handling!
+    recipesApp.randomJoke();
 
 }
+
+recipesApp.randomJoke = function () {
+    const apiUrl = `https://api.spoonacular.com/food/jokes/random`
+    const url = new URL(apiUrl);
+    url.search = new URLSearchParams ({
+        apiKey: recipesApp.apiKey,
+    });
+    fetch(url)
+    .then(function (response) {
+        if (response.ok) {
+            return response.json();
+        } else {
+            throw new Error();
+        }
+    })
+    .then(function (jsonData) {
+        console.log(jsonData);
+        })
+        .catch(function (error) {
+            console.log(error);
+        })
+}
+
+
 
 recipesApp.cardListener = function() {
     recipesApp.cardClick.addEventListener('click', function (event) {
