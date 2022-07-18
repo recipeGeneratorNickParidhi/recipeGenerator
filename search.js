@@ -1,59 +1,9 @@
 // Creating Namespace
 recipesApp = {};
 
-// Building Array for Cuising Selection
-recipesApp.cuisineOptions = [
-    "African",
-    "American",
-    "British",
-    "Cajun",
-    "Caribbean",
-    "Chinese",
-    "Eastern European",
-    "European",
-    "French",
-    "German",
-    "Greek",
-    "Indian",
-    "Irish",
-    "Italian",
-    "Japanese",
-    "Jewish",
-    "Korean",
-    "Latin American",
-    "Mediterranean",
-    "Mexican",
-    "Middle Eastern",
-    "Nordic",
-    "Southern",
-    "Spanish",
-    "Thai",
-    "Vietnamese",
-];
 // Querying global variables from HTML and saving as variable
-recipesApp.select = document.querySelector('select');
 recipesApp.cardClick = document.querySelector('#cardHolder');
 recipesApp.recipeSearch = document.querySelector('#recipeSearchForm');
-
-// Defining a method to populate the dropdown menu
-recipesApp.populateCuisineSelect = function (cuisinesArray){
-    // using a forEach loop to populate the select
-    cuisinesArray.forEach((option) => {
-        const newOption = document.createElement('option');
-        newOption.value = option;
-        newOption.textContent = option;
-        recipesApp.select.appendChild(newOption);
-    })
-}
-
-// Adding event listener to the SELECT to listen for users selection and calling an API call method
-recipesApp.userQuery = function(dropdownMenu){
-    dropdownMenu.addEventListener('change', function (event) {
-        event.preventDefault();
-        const selectedCuisine = this.value;
-        recipesApp.apiCallCuisine(selectedCuisine);
-    })
-}
 
 // Adding event listener to the input to listen to users selection and calling API
 
@@ -93,29 +43,6 @@ recipesApp.apiCallSearch = function(searchedRecipe) {
         })    
 }
 
-// Making api call based on user's cuisine selection to return an object of 10 recipes
-recipesApp.apiCallCuisine = function (selectedCuisine) {
-    const apiUrl = "https://api.spoonacular.com/recipes/complexSearch/";
-    const url = new URL(apiUrl);
-    url.search = new URLSearchParams ({
-        apiKey: recipesApp.apiKey,
-        cuisine: selectedCuisine,
-    });
-    fetch(url)
-        .then(function (response) {
-        if (response.ok) {
-            return response.json();
-        } else {
-            throw new Error();
-        }
-        })
-        .then(function (jsonData) {
-            recipesApp.randomizer(jsonData);
-        })
-        .catch(function (error) {
-            recipesApp.errorHandle();
-        })
-}
 
 // choosing a random recipe from the object
 recipesApp.randomizer = function (cuisineArray){
@@ -173,7 +100,6 @@ recipesApp.displaydata = function (recipesData) {
     const articleItem = document.createElement("article");
     // Clearing Div so new recipe can be displayed
     outerDiv.innerHTML = '';
-    recipeInstructionsDiv.innerHTML = "";
     // assigning the information from the object to HTML
     newHeading.textContent = recipesData.title;
     imageItem.src = recipesData.image;
@@ -206,6 +132,7 @@ recipesApp.errorHandle = function () {
     newHeading.textContent = 'Sorry - No Recipes match that selection. Please select again';
     outerDiv.appendChild(newHeading);
     // add a function here for a random joke when error handling!
+
 }
 
 recipesApp.cardListener = function() {
@@ -215,9 +142,8 @@ recipesApp.cardListener = function() {
 }
 // Init
 recipesApp.init = function(){
-    recipesApp.populateCuisineSelect(recipesApp.cuisineOptions);
-    recipesApp.userQuery(recipesApp.select);
     recipesApp.cardListener();
+    recipesApp.userSearch(recipesApp.recipeSearch);
 }
 // Call the init method to kickstart the app upon page load
 recipesApp.init();

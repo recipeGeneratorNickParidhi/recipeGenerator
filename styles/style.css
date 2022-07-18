@@ -267,13 +267,44 @@ img {
   margin: 0 auto;
 }
 
-header h1 {
-  text-align: center;
-  text-transform: uppercase;
+header .headerNav {
   background-color: #43AA8B;
   color: white;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+}
+header .headerNav h1 {
+  text-align: center;
+  text-transform: uppercase;
   font-weight: 600;
-  padding: 1rem 0;
+  padding: 1rem 0 1rem 2rem;
+}
+header .headerNav nav {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+header .headerNav nav ul {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  padding-right: 1rem;
+}
+header .headerNav nav ul li a {
+  padding: 1rem;
+  text-transform: uppercase;
+  -webkit-transition: 0.4s;
+  transition: 0.4s;
+}
+header .headerNav nav ul li a:hover, header .headerNav nav ul li a:focus {
+  color: #003391;
 }
 header .headerImage {
   background-image: url("../assets/backgroundImage.jpg");
@@ -317,22 +348,28 @@ main {
   text-align: center;
 }
 
-.introDropdown {
+.introDropdown, .introSearch {
   margin: 50px 0;
   width: 100%;
 }
-.introDropdown p {
+.introDropdown p, .introSearch p {
   padding: 1rem 0;
 }
-.introDropdown select {
+.introDropdown select, .introSearch select {
   background-color: #43AA8B;
   color: white;
   padding: 0.5rem 1rem;
   text-align: center;
   border: none;
 }
-.introDropdown select option {
+.introDropdown select option, .introSearch select option {
   color: white;
+}
+.introDropdown .recipeSearchForm input, .introSearch .recipeSearchForm input {
+  margin-top: 1rem;
+  padding: 0.5rem;
+  border: 2px solid #43AA8B;
+  outline: none;
 }
 
 .results {

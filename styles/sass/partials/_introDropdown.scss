@@ -1,15 +1,13 @@
 main {
-    // height: calc( 100vh - 7vh);
     text-align: center;
 }
 
-.introDropdown {
+.introDropdown, .introSearch {
     margin: 50px 0;
     width: 100%;
     p {
         padding: 1rem 0;
     }
-
 
     select {
         background-color: $accentColor;
@@ -21,5 +19,14 @@ main {
             color: $backgroundColor;
         }
         
+    }
+
+    .recipeSearchForm {
+        input  {
+            margin-top: 1rem;
+            padding: 0.5rem;
+            border: 2px solid $accentColor;
+            outline: none;
+        }
     }
 }
