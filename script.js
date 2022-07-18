@@ -173,6 +173,7 @@ recipesApp.displaydata = function (recipesData) {
     const articleItem = document.createElement("article");
     // Clearing Div so new recipe can be displayed
     outerDiv.innerHTML = '';
+    recipeInstructionsDiv.innerHTML = "";
     // assigning the information from the object to HTML
     newHeading.textContent = recipesData.title;
     imageItem.src = recipesData.image;
@@ -205,7 +206,6 @@ recipesApp.errorHandle = function () {
     newHeading.textContent = 'Sorry - No Recipes match that selection. Please select again';
     outerDiv.appendChild(newHeading);
     // add a function here for a random joke when error handling!
-
 }
 
 recipesApp.cardListener = function() {
@@ -218,7 +218,6 @@ recipesApp.init = function(){
     recipesApp.populateCuisineSelect(recipesApp.cuisineOptions);
     recipesApp.userQuery(recipesApp.select);
     recipesApp.cardListener();
-    recipesApp.userSearch(recipesApp.recipeSearch);
 }
 // Call the init method to kickstart the app upon page load
 recipesApp.init();
