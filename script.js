@@ -209,15 +209,30 @@ recipesApp.errorHandle = function () {
 }
 
 recipesApp.cardListener = function() {
-    recipesApp.cardClick.addEventListener('click', function (event) {
+    recipesApp.cardClick.addEventListener('click', function () {
         const innerCard = document.querySelector('#cardHolderInner').classList.toggle('rotateCard');
     })
+}
+
+recipesApp.burgerMenu = function() {
+    document.querySelector('#menuButton').addEventListener('click', function () {
+        document.querySelector('#menu').classList.toggle('showMenu');
+        document.querySelector('#menuButton').classList.add('hidden');
+        document.querySelector('#closeButton').classList.remove('hidden');
+    })
+    document.querySelector('#closeButton').addEventListener('click', function () {
+        document.querySelector('#menu').classList.toggle('showMenu');
+        document.querySelector('#menuButton').classList.remove('hidden');
+        document.querySelector('#closeButton').classList.add('hidden');
+    })
+
 }
 // Init
 recipesApp.init = function(){
     recipesApp.populateCuisineSelect(recipesApp.cuisineOptions);
     recipesApp.userQuery(recipesApp.select);
     recipesApp.cardListener();
+    recipesApp.burgerMenu();
 }
 // Call the init method to kickstart the app upon page load
 recipesApp.init();

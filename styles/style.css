@@ -267,6 +267,13 @@ img {
   margin: 0 auto;
 }
 
+button {
+  background: none;
+  border: none;
+  color: white;
+  cursor: pointer;
+}
+
 header .headerNav {
   background-color: #43AA8B;
   color: white;
@@ -276,6 +283,10 @@ header .headerNav {
   -webkit-box-pack: justify;
       -ms-flex-pack: justify;
           justify-content: space-between;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  height: 10vh;
 }
 header .headerNav h1 {
   text-align: center;
@@ -291,26 +302,62 @@ header .headerNav nav {
       -ms-flex-align: center;
           align-items: center;
 }
-header .headerNav nav ul {
+header .headerNav nav .menu {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
-  padding-right: 1rem;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  position: absolute;
+  -webkit-transform: translateY(-100%);
+          transform: translateY(-100%);
+  -webkit-transition: -webkit-transform 0.2s;
+  transition: -webkit-transform 0.2s;
+  transition: transform 0.2s;
+  transition: transform 0.2s, -webkit-transform 0.2s;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: #43AA8B;
+  z-index: 2;
 }
-header .headerNav nav ul li a {
+header .headerNav nav .menu li a {
   padding: 1rem;
   text-transform: uppercase;
   -webkit-transition: 0.4s;
   transition: 0.4s;
+  font-size: 3rem;
 }
-header .headerNav nav ul li a:hover, header .headerNav nav ul li a:focus {
+header .headerNav nav .menu li a:hover, header .headerNav nav .menu li a:focus {
   color: #003391;
+}
+header .headerNav .hamburgerMenu {
+  padding-right: 2rem;
 }
 header .headerImage {
   background-image: url("../assets/backgroundImage.jpg");
   background-position: center;
   background-size: cover;
   height: 50vh;
+}
+
+#menu.showMenu {
+  -webkit-transform: translateY(0);
+          transform: translateY(0);
+  top: 10vh;
+}
+
+.hidden {
+  display: none;
 }
 
 footer {
