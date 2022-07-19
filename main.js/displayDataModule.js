@@ -41,3 +41,10 @@ export function displayIngredients (recipesData) {
 
   });
 }
+
+// Creating and Eventlistener to flip the card
+export function cardListener () {
+  document.querySelector('#cardHolder').addEventListener('click', function (event) {
+    document.querySelector('#cardHolderInner').classList.toggle('rotateCard');
+  })
+}

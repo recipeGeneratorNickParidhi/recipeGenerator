@@ -1,4 +1,5 @@
 export default function errorHandle () {
+    document.querySelector("#recipeInstructions").innerHTML = "";
     const outerDiv = document.querySelector('#recipeResult');
     outerDiv.innerHTML = '';
     const ulItem = document.querySelector("#ingredientsList");
