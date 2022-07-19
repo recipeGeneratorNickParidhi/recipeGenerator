@@ -1,6 +1,7 @@
+import burgerMenu from "./burgerMenuModule.js";
 import { apiCallCuisine } from "./apiCallsModule.js";
 import { cardListener } from "./displayDataModule.js";
-import populateSelect from "./selectPopulateModule.js";
+import  populateSelect from "./selectPopulateModule.js";
 
 
 // Creating Namespace
@@ -44,24 +45,9 @@ recipesApp.userQuery = function(){
         apiCallCuisine(selectedCuisine);
     })
 }
-
-recipesApp.burgerMenu = function() {
-    document.querySelector('#menuButton').addEventListener('click', function () {
-        document.querySelector('#menu').classList.toggle('showMenu');
-        document.querySelector('#menuButton').classList.add('hidden');
-        document.querySelector('#closeButton').classList.remove('hidden');
-    })
-    document.querySelector('#closeButton').addEventListener('click', function () {
-        document.querySelector('#menu').classList.toggle('showMenu');
-        document.querySelector('#menuButton').classList.remove('hidden');
-        document.querySelector('#closeButton').classList.add('hidden');
-    })
-
-}
-
 // Init
 recipesApp.init = function(){
-    recipesApp.burgerMenu();
+    burgerMenu();
     populateSelect(recipesApp.cuisineOptions);
     recipesApp.userQuery();
     cardListener();

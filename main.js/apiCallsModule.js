@@ -3,7 +3,7 @@ import { displaydata, displayIngredients } from "./displayDataModule.js";
 import randomizer from "./randomizerModule.js"
 
 // API Key
-const apiKey = "feb72c00c13a445b8a1a2dbb2e3b7f59"
+const apiKey = "f96847a1b0264361a0b853ba747d1ede"
 
 // Making api call to autocomplete endpoint based on user's search
 

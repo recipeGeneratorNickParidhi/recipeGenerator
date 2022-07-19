@@ -1,3 +1,4 @@
+import burgerMenu from "./burgerMenuModule.js";
 import { apiCallSearch } from "./apiCallsModule.js";
 import { cardListener } from "./displayDataModule.js";
 
@@ -16,6 +17,7 @@ recipesApp.userSearch = function() {
 
 // Init
 recipesApp.init = function(){
+    burgerMenu();
     recipesApp.userSearch();
     cardListener();
 }
