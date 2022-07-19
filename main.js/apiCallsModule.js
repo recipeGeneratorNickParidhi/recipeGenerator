@@ -3,7 +3,7 @@ import { displaydata, displayIngredients } from "./displayDataModule.js";
 import randomizer from "./randomizerModule.js"
 
 // API Key
-const apiKey = "feb72c00c13a445b8a1a2dbb2e3b7f59"
+const apiKey = "04fc501ca28f472fbe5d7a82c0688755"
 
 // Making api call to autocomplete endpoint based on user's search
 
@@ -96,6 +96,12 @@ export function apiCallRecipe (recipeIdNumber) {
             }
         })
         .then(function (jsonData) {
+            // Clearing HTML from previous response and rotating card back to front
+            document.querySelector("#ingredientsList").innerHTML = '';
+            document.querySelector('#recipeResult').innerHTML = '';
+            document.querySelector("#recipeInstructions").innerHTML = '';
+            document.querySelector('#cardHolderInner').classList.remove('rotateCard');
+            // Calling Functions to display cards
             displayIngredients(jsonData);
             displaydata(jsonData);
             document.querySelector('#cardHolder').style.display = 'block';
