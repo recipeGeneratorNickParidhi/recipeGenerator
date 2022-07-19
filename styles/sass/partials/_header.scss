@@ -33,8 +33,10 @@ header {
                 z-index: 2;
 
                 li {
+                    // border: black 2px solid;
+                    padding: 0.5rem 0;
                     a {
-                        padding: 1rem;
+                        // border: brown 2px solid;
                         text-transform: uppercase;
                         transition: 0.4s;
                         font-size: 3rem;;

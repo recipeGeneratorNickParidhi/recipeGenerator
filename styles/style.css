@@ -330,8 +330,10 @@ header .headerNav nav .menu {
   background: #43AA8B;
   z-index: 2;
 }
+header .headerNav nav .menu li {
+  padding: 0.5rem 0;
+}
 header .headerNav nav .menu li a {
-  padding: 1rem;
   text-transform: uppercase;
   -webkit-transition: 0.4s;
   transition: 0.4s;
