@@ -19,8 +19,7 @@ export function displaydata (recipesData) {
         <div class="cookTime"><i class="fa-regular fa-clock"></i>Cook Time<p>${recipesData.readyInMinutes} mins</p></div>
         <div class="servings"><i class="fa-regular fa-user"></i>Serves<p>${recipesData.servings}</p></div>
     </div>
-    <button class="ingredientsButton" id="ingredientsButton">Ingredients</button>
-    `;
+    <button class="ingredientsButton" id="ingredientsButton">Ingredients</button>`;
 
     recipeInstructionsDiv.innerHTML = 
     `<article class="recipeInfo">${articleItem.textContent}</article>
@@ -44,7 +43,7 @@ export function displayIngredients (recipesData) {
 
 // Creating and Eventlistener to flip the card
 export function cardListener () {
-  document.querySelector('#cardHolder').addEventListener('click', function (event) {
+  document.querySelector('#cardHolder').addEventListener('click', function () {
     document.querySelector('#cardHolderInner').classList.toggle('rotateCard');
   })
 }

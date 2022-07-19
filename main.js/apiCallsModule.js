@@ -100,7 +100,7 @@ export function apiCallRecipe (recipeIdNumber) {
             displaydata(jsonData);
             document.querySelector('#cardHolder').style.display = 'block';
         })
-        .catch(function (error) {
+        .catch(function () {
             errorHandle();
         })
 }

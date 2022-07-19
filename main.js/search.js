@@ -5,7 +5,7 @@ import { cardListener } from "./displayDataModule.js";
 const recipesApp = {};
 
 // Adding event listener to the input to listen to users selection and calling API
-recipesApp.userSearch = function(searchInput) {
+recipesApp.userSearch = function() {
     document.querySelector('#recipeSearchForm').addEventListener('submit', function(event) {
         event.preventDefault();
         const searchItem = document.querySelector('#recipeSearch');
