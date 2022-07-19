@@ -39,6 +39,7 @@ recipesApp.userQuery = function(dropdownMenu){
     })
 }
 
+
 recipesApp.apiKey = "feb72c00c13a445b8a1a2dbb2e3b7f59"
 
 // Making api call based on user's diet selection to return an object of 10 recipes
