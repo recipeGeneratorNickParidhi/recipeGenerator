@@ -1,4 +1,4 @@
-export default function displaydata (recipesData) {
+export function displaydata (recipesData) {
     const outerDiv = document.querySelector('#recipeResult');
     const recipeInstructionsDiv = document.querySelector("#recipeInstructions");
     const newHeading = document.createElement('h2');
@@ -27,4 +27,17 @@ export default function displaydata (recipesData) {
     <p class="recipeLink">  For the original recipe, click the link 
     <a href="${recipesData.sourceUrl}">here</a> `;
 
+}
+
+// Defining a method to get the randomly selected recipe and return the ingredients list
+export function displayIngredients (recipesData) {
+  const ulItem = document.querySelector("#ingredientsList");
+  ulItem.innerHTML = '';
+  const ingredientsArray = recipesData.extendedIngredients;
+  ingredientsArray.forEach( ingredientObj => {
+      const listItem = document.createElement("li");
+      listItem.textContent = ingredientObj.original;
+      ulItem.appendChild(listItem);
+
+  });
 }

@@ -1,4 +1,6 @@
-import displaydata from "./modules.js";
+import { displaydata, displayIngredients } from "./displayDataModule.js";
+import errorHandle from "./errorHandleModule.js";
+
 
 // Creating Namespace
 const recipesApp = {};
@@ -63,7 +65,7 @@ recipesApp.apiCallDiet = function (selectedDiet) {
             recipesApp.randomizer(jsonData);
         })
         .catch(function (error) {
-            recipesApp.errorHandle();
+            errorHandle();
         })
 }
 
@@ -92,68 +94,18 @@ recipesApp.apiCallRecipe = function (recipeIdNumber) {
         }
     })
     .then(function (jsonData) {
-            recipesApp.displayIngredients(jsonData);
+            displayIngredients(jsonData);
             displaydata(jsonData);
             recipesApp.cardClick.style.display = 'block';
         })
         .catch(function (error) {
-            recipesApp.errorHandle();
+            errorHandle();
         })
 }
-
-// Defining a method to get the randomly selected recipe and return the ingredients list
-recipesApp.displayIngredients = function(recipesData) {
-    const ulItem = document.querySelector("#ingredientsList");
-    ulItem.innerHTML = '';
-    const ingredientsArray = recipesData.extendedIngredients;
-    ingredientsArray.forEach( ingredientObj => {
-        const listItem = document.createElement("li");
-        listItem.textContent = ingredientObj.original;
-        ulItem.appendChild(listItem);
-
-    });
-}
-// Error Handling no response from API
-recipesApp.errorHandle = function () {
-    const outerDiv = document.querySelector('#recipeResult');
-    outerDiv.innerHTML = '';
-    const ulItem = document.querySelector("#ingredientsList");
-    ulItem.innerHTML = '';
-    const newHeading = document.createElement('h2');
-    newHeading.textContent = 'Sorry - No Recipes match that selection. Please select again';
-    outerDiv.appendChild(newHeading);
-    // add a function here for a random joke when error handling!
-    recipesApp.randomJoke();
-
-}
-
-recipesApp.randomJoke = function () {
-    const apiUrl = `https://api.spoonacular.com/food/jokes/random`
-    const url = new URL(apiUrl);
-    url.search = new URLSearchParams ({
-        apiKey: recipesApp.apiKey,
-    });
-    fetch(url)
-    .then(function (response) {
-        if (response.ok) {
-            return response.json();
-        } else {
-            throw new Error();
-        }
-    })
-    .then(function (jsonData) {
-        console.log(jsonData);
-        })
-        .catch(function (error) {
-            console.log(error);
-        })
-}
-
-
 
 recipesApp.cardListener = function() {
     recipesApp.cardClick.addEventListener('click', function (event) {
-        const innerCard = document.querySelector('#cardHolderInner').classList.toggle('rotateCard');
+        document.querySelector('#cardHolderInner').classList.toggle('rotateCard');
     })
 }
 // Init

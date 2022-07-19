@@ -1,4 +1,6 @@
-import displaydata from "./modules.js";
+import { displaydata, displayIngredients } from "./displayDataModule.js";
+import errorHandle from "./errorHandleModule.js";
+
 
 // Creating Namespace
 const recipesApp = {};
@@ -91,7 +93,7 @@ recipesApp.apiCallSearch = function(searchedRecipe) {
             recipesApp.apiCallRecipe(jsonData[0].id);
         })
         .catch(function (error) {
-            recipesApp.errorHandle();
+            errorHandle();
         })    
 }
 
@@ -115,7 +117,7 @@ recipesApp.apiCallCuisine = function (selectedCuisine) {
             recipesApp.randomizer(jsonData);
         })
         .catch(function (error) {
-            recipesApp.errorHandle();
+            errorHandle();
         })
 }
 
@@ -144,76 +146,18 @@ recipesApp.apiCallRecipe = function (recipeIdNumber) {
         }
     })
     .then(function (jsonData) {
-            recipesApp.displayIngredients(jsonData);
+            displayIngredients(jsonData);
             displaydata(jsonData);
             recipesApp.cardClick.style.display = 'block';
         })
         .catch(function (error) {
-            recipesApp.errorHandle();
+            errorHandle();
         })
-}
-
-// Defining a method to get the randomly selected recipe and return the ingredients list
-recipesApp.displayIngredients = function(recipesData) {
-    const ulItem = document.querySelector("#ingredientsList");
-    ulItem.innerHTML = '';
-    const ingredientsArray = recipesData.extendedIngredients;
-    ingredientsArray.forEach( ingredientObj => {
-        const listItem = document.createElement("li");
-        listItem.textContent = ingredientObj.original;
-        ulItem.appendChild(listItem);
-
-    });
-}
-
-// Displaying data on page from recipesApp.apiCallRecipe on page
-// displaydata(recipesData);
-// recipesApp.displaydata = function (recipesData) {
-//     const outerDiv = document.querySelector('#recipeResult');
-//     const recipeInstructionsDiv = document.querySelector("#recipeInstructions");
-//     const newHeading = document.createElement('h2');
-//     const imageItem = document.createElement('img');
-//     const articleItem = document.createElement("article");
-//     // Clearing Div so new recipe can be displayed
-//     outerDiv.innerHTML = '';
-//     recipeInstructionsDiv.innerHTML = "";
-//     // assigning the information from the object to HTML
-//     newHeading.textContent = recipesData.title;
-//     imageItem.src = recipesData.image;
-//     articleItem.textContent = recipesData.instructions;
-//       // Appending and formatting everything
-//     outerDiv.innerHTML = `
-//     <div class="imgContainer"><img src=${imageItem.src} alt="Image of ${newHeading.textContent}"></div>
-//     <h2>${newHeading.textContent}</h2>
-//     <div class="cookingTimeServings">
-//         <div class="cookTime"><i class="fa-regular fa-clock"></i>Cook Time<p>${recipesData.readyInMinutes} mins</p></div>
-//         <div class="servings"><i class="fa-regular fa-user"></i>Serves<p>${recipesData.servings}</p></div>
-//     </div>
-//     <button class="ingredientsButton" id="ingredientsButton">Ingredients</button>
-//     `;
-
-//     recipeInstructionsDiv.innerHTML = 
-//     `<article class="recipeInfo">${articleItem.textContent}</article>
-//     <p class="recipeLink">  For the original recipe, click the link 
-//     <a href="${recipesData.sourceUrl}">here</a> `;
-
-// }
-
-// Error Handling no response from API
-recipesApp.errorHandle = function () {
-    const outerDiv = document.querySelector('#recipeResult');
-    outerDiv.innerHTML = '';
-    const ulItem = document.querySelector("#ingredientsList");
-    ulItem.innerHTML = '';
-    const newHeading = document.createElement('h2');
-    newHeading.textContent = 'Sorry - No Recipes match that selection. Please select again';
-    outerDiv.appendChild(newHeading);
-    // add a function here for a random joke when error handling!
 }
 
 recipesApp.cardListener = function() {
     recipesApp.cardClick.addEventListener('click', function (event) {
-        const innerCard = document.querySelector('#cardHolderInner').classList.toggle('rotateCard');
+        document.querySelector('#cardHolderInner').classList.toggle('rotateCard');
     })
 }
 // Init
