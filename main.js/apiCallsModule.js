@@ -96,6 +96,12 @@ export function apiCallRecipe (recipeIdNumber) {
             }
         })
         .then(function (jsonData) {
+            // Clearing HTML from previous response and rotating card back to front
+            document.querySelector("#ingredientsList").innerHTML = '';
+            document.querySelector('#recipeResult').innerHTML = '';
+            document.querySelector("#recipeInstructions").innerHTML = '';
+            document.querySelector('#cardHolderInner').classList.remove('rotateCard');
+            // Calling Functions to display cards
             displayIngredients(jsonData);
             displaydata(jsonData);
             document.querySelector('#cardHolder').style.display = 'block';
