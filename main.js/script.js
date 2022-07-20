@@ -1,6 +1,7 @@
+import burgerMenu from "./burgerMenuModule.js";
 import { apiCallCuisine } from "./apiCallsModule.js";
 import { cardListener } from "./displayDataModule.js";
-import populateSelect from "./selectPopulateModule.js";
+import  populateSelect from "./selectPopulateModule.js";
 
 
 // Creating Namespace
@@ -44,12 +45,13 @@ recipesApp.userQuery = function(){
         apiCallCuisine(selectedCuisine);
     })
 }
-
 // Init
 recipesApp.init = function(){
+    burgerMenu();
     populateSelect(recipesApp.cuisineOptions);
     recipesApp.userQuery();
     cardListener();
+
 }
 // Call the init method to kickstart the app upon page load
 recipesApp.init();

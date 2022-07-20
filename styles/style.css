@@ -267,6 +267,13 @@ img {
   margin: 0 auto;
 }
 
+button {
+  background: none;
+  border: none;
+  color: white;
+  cursor: pointer;
+}
+
 header .headerNav {
   background-color: #43AA8B;
   color: white;
@@ -276,6 +283,10 @@ header .headerNav {
   -webkit-box-pack: justify;
       -ms-flex-pack: justify;
           justify-content: space-between;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  height: 10vh;
 }
 header .headerNav h1 {
   text-align: center;
@@ -291,26 +302,65 @@ header .headerNav nav {
       -ms-flex-align: center;
           align-items: center;
 }
-header .headerNav nav ul {
+header .headerNav nav .menu {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
-  padding-right: 1rem;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  position: absolute;
+  -webkit-transform: translateY(-100%);
+          transform: translateY(-100%);
+  -webkit-transition: -webkit-transform 0.2s;
+  transition: -webkit-transform 0.2s;
+  transition: transform 0.2s;
+  transition: transform 0.2s, -webkit-transform 0.2s;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: #43AA8B;
+  opacity: 0.9;
+  z-index: 2;
 }
-header .headerNav nav ul li a {
-  padding: 1rem;
+header .headerNav nav .menu li {
+  padding: 0.5rem 0;
+}
+header .headerNav nav .menu li a {
   text-transform: uppercase;
   -webkit-transition: 0.4s;
   transition: 0.4s;
+  font-size: 2rem;
 }
-header .headerNav nav ul li a:hover, header .headerNav nav ul li a:focus {
+header .headerNav nav .menu li a:hover, header .headerNav nav .menu li a:focus {
   color: #003391;
+}
+header .headerNav .hamburgerMenu {
+  padding-right: 2rem;
 }
 header .headerImage {
   background-image: url("../assets/backgroundImage.jpg");
   background-position: center;
   background-size: cover;
-  height: 50vh;
+  height: 60vh;
+}
+
+#menu.showMenu {
+  -webkit-transform: translateY(0);
+          transform: translateY(0);
+  top: 10vh;
+}
+
+.hidden {
+  display: none;
 }
 
 footer {
@@ -349,7 +399,7 @@ main {
 }
 
 .introDropdown, .introSearch {
-  margin: 50px 0;
+  margin: 30px 0;
   width: 100%;
 }
 .introDropdown p, .introSearch p {
@@ -366,7 +416,6 @@ main {
   color: white;
 }
 .introDropdown .recipeSearchForm input, .introSearch .recipeSearchForm input {
-  margin-top: 1rem;
   padding: 0.5rem;
   border: 2px solid #43AA8B;
   outline: none;
@@ -559,6 +608,25 @@ main {
 }
 
 @media (max-width: 720px) {
+  .wrapper {
+    width: 85%;
+  }
+  header .headerNav {
+    height: 7vh;
+  }
+  header .headerNav h1 {
+    font-size: 1.5rem;
+    padding: 0.5rem 0 0.5rem 1rem;
+  }
+  header .headerNav .hamburgerMenu {
+    padding-right: 1rem;
+  }
+  header .headerImage {
+    height: 40vh;
+  }
+  header #menu.showMenu {
+    top: 7vh;
+  }
   footer .footerContent {
     -webkit-box-orient: vertical;
     -webkit-box-direction: normal;
@@ -566,9 +634,21 @@ main {
             flex-direction: column;
   }
   footer .footerContent p {
-    padding-top: 1rem;
+    padding-top: 0.5rem;
   }
   footer .footerContent p:last-child {
     padding-bottom: 1rem;
+  }
+}
+@media (max-width: 380px) {
+  header .headerNav {
+    height: 7vh;
+  }
+  header .headerNav h1 {
+    font-size: 1.25rem;
+    padding: 0.5rem 0 0.5rem 1rem;
+  }
+  header .headerImage {
+    height: 40vh;
   }
 }
