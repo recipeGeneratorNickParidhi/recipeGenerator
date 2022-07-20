@@ -30,27 +30,24 @@ header {
                 right: 0;
                 bottom: 0;
                 background: $accentColor;
+                opacity: 0.9;
                 z-index: 2;
 
                 li {
-                    // border: black 2px solid;
                     padding: 0.5rem 0;
                     a {
-                        // border: brown 2px solid;
                         text-transform: uppercase;
                         transition: 0.4s;
-                        font-size: 3rem;;
+                        font-size: 2rem;;
                         &:hover, &:focus {
                             color: $secondaryColor;
                         }
                     }
                 }
             }
-
         }
         .hamburgerMenu {
             padding-right: 2rem;
-
         }
     }
     .headerImage{
@@ -58,7 +55,7 @@ header {
         background-image: url('../assets/backgroundImage.jpg'); 
         background-position: center; 
         background-size: cover;
-        height: 50vh;
+        height: 60vh;
     }
 }
 

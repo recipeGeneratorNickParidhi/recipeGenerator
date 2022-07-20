@@ -328,6 +328,7 @@ header .headerNav nav .menu {
   right: 0;
   bottom: 0;
   background: #43AA8B;
+  opacity: 0.9;
   z-index: 2;
 }
 header .headerNav nav .menu li {
@@ -337,7 +338,7 @@ header .headerNav nav .menu li a {
   text-transform: uppercase;
   -webkit-transition: 0.4s;
   transition: 0.4s;
-  font-size: 3rem;
+  font-size: 2rem;
 }
 header .headerNav nav .menu li a:hover, header .headerNav nav .menu li a:focus {
   color: #003391;
@@ -349,7 +350,7 @@ header .headerImage {
   background-image: url("../assets/backgroundImage.jpg");
   background-position: center;
   background-size: cover;
-  height: 50vh;
+  height: 60vh;
 }
 
 #menu.showMenu {
@@ -398,7 +399,7 @@ main {
 }
 
 .introDropdown, .introSearch {
-  margin: 50px 0;
+  margin: 30px 0;
   width: 100%;
 }
 .introDropdown p, .introSearch p {
@@ -415,7 +416,6 @@ main {
   color: white;
 }
 .introDropdown .recipeSearchForm input, .introSearch .recipeSearchForm input {
-  margin-top: 1rem;
   padding: 0.5rem;
   border: 2px solid #43AA8B;
   outline: none;
@@ -608,6 +608,9 @@ main {
 }
 
 @media (max-width: 720px) {
+  .wrapper {
+    width: 90%;
+  }
   footer .footerContent {
     -webkit-box-orient: vertical;
     -webkit-box-direction: normal;
