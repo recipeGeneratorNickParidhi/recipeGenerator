@@ -609,7 +609,23 @@ main {
 
 @media (max-width: 720px) {
   .wrapper {
-    width: 90%;
+    width: 85%;
+  }
+  header .headerNav {
+    height: 7vh;
+  }
+  header .headerNav h1 {
+    font-size: 1.5rem;
+    padding: 0.5rem 0 0.5rem 1rem;
+  }
+  header .headerNav .hamburgerMenu {
+    padding-right: 1rem;
+  }
+  header .headerImage {
+    height: 40vh;
+  }
+  header #menu.showMenu {
+    top: 7vh;
   }
   footer .footerContent {
     -webkit-box-orient: vertical;
@@ -618,9 +634,21 @@ main {
             flex-direction: column;
   }
   footer .footerContent p {
-    padding-top: 1rem;
+    padding-top: 0.5rem;
   }
   footer .footerContent p:last-child {
     padding-bottom: 1rem;
+  }
+}
+@media (max-width: 380px) {
+  header .headerNav {
+    height: 7vh;
+  }
+  header .headerNav h1 {
+    font-size: 1.25rem;
+    padding: 0.5rem 0 0.5rem 1rem;
+  }
+  header .headerImage {
+    height: 40vh;
   }
 }
