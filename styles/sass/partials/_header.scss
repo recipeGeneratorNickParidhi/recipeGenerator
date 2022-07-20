@@ -17,7 +17,7 @@ header {
             display: flex;
             align-items: center;
 
-            .menu {
+            .slideDownMenu {
                 display: flex;
                 flex-direction: column;
                 justify-content: center;
@@ -44,7 +44,14 @@ header {
                         }
                     }
                 }
+
+            // class gets toggled when clicked on using JS
             }
+            .showMenu {
+                transform: translateY(0);
+                top: 10vh;
+            }
+            
         }
         .hamburgerMenu {
             padding-right: 2rem;
@@ -57,11 +64,6 @@ header {
         background-size: cover;
         height: 60vh;
     }
-}
-
-#menu.showMenu {
-    transform: translateY(0);
-    top: 10vh;
 }
 
 .hidden {
