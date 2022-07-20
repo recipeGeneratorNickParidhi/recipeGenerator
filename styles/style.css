@@ -302,7 +302,7 @@ header .headerNav nav {
       -ms-flex-align: center;
           align-items: center;
 }
-header .headerNav nav .menu {
+header .headerNav nav .slideDownMenu {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -331,17 +331,22 @@ header .headerNav nav .menu {
   opacity: 0.9;
   z-index: 2;
 }
-header .headerNav nav .menu li {
+header .headerNav nav .slideDownMenu li {
   padding: 0.5rem 0;
 }
-header .headerNav nav .menu li a {
+header .headerNav nav .slideDownMenu li a {
   text-transform: uppercase;
   -webkit-transition: 0.4s;
   transition: 0.4s;
   font-size: 2rem;
 }
-header .headerNav nav .menu li a:hover, header .headerNav nav .menu li a:focus {
+header .headerNav nav .slideDownMenu li a:hover, header .headerNav nav .slideDownMenu li a:focus {
   color: #003391;
+}
+header .headerNav nav .showMenu {
+  -webkit-transform: translateY(0);
+          transform: translateY(0);
+  top: 10vh;
 }
 header .headerNav .hamburgerMenu {
   padding-right: 2rem;
@@ -351,12 +356,6 @@ header .headerImage {
   background-position: center;
   background-size: cover;
   height: 60vh;
-}
-
-#menu.showMenu {
-  -webkit-transform: translateY(0);
-          transform: translateY(0);
-  top: 10vh;
 }
 
 .hidden {
