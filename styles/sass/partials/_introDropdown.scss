@@ -3,7 +3,7 @@ main {
 }
 
 .introDropdown, .introSearch {
-    margin: 50px 0;
+    margin: 30px 0;
     width: 100%;
     p {
         padding: 1rem 0;
@@ -23,7 +23,6 @@ main {
 
     .recipeSearchForm {
         input  {
-            margin-top: 1rem;
             padding: 0.5rem;
             border: 2px solid $accentColor;
             outline: none;

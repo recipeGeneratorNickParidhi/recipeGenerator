@@ -1,3 +1,4 @@
+import burgerMenu from "./burgerMenuModule.js";
 import { apiCallDiet } from "./apiCallsModule.js";
 import { cardListener } from "./displayDataModule.js";
 import populateSelect from "./selectPopulateModule.js";
@@ -31,6 +32,7 @@ recipesApp.userQuery = function(){
 
 // Init
 recipesApp.init = function(){
+    burgerMenu();
     populateSelect(recipesApp.dietOptions);
     recipesApp.userQuery();
     cardListener();
