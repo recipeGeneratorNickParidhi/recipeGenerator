@@ -1,13 +1,54 @@
 @media (max-width: 720px) {
+    .wrapper {
+        width: 85%;
+    }
+
+    header {
+        .headerNav {
+            height: 7vh;
+            h1 {
+                font-size: 1.5rem;
+                padding: 0.5rem 0 0.5rem 1rem;
+            }
+            .hamburgerMenu {
+                padding-right: 1rem;
+            }
+        }
+        
+        .headerImage {
+            height: 40vh;
+        }
+
+
+
+        #menu.showMenu {
+            top: 7vh
+        }
+    }
     footer {
         .footerContent {
             flex-direction: column;
             p {
-                padding-top: 1rem;
+                padding-top: 0.5rem;
                 &:last-child {
                     padding-bottom: 1rem;
                 }
             }
+        }
+    }
+}
+
+@media (max-width: 380px) {
+    header {
+        .headerNav {
+            height: 7vh;
+            h1 {
+                font-size: 1.25rem;
+                padding: 0.5rem 0 0.5rem 1rem;
+            }
+        }
+        .headerImage {
+            height: 40vh;
         }
     }
 }

@@ -4,6 +4,11 @@
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<title>Recipe Generator by Diet</title>
+    <!-- Favicon donwloaded from https://icons8.com/icons/set/food-dinner -->
+    <link rel="shortcut icon" href="./assets/fav-icons8-dinner-16.png" type="image/png" sizes="16x16">
+    <link rel="icon" type="image/png" href="./assets/icons8-dinner-pastel-32.png" sizes="32x32">
+    <link rel="apple-touch-icon" sizes="72x72" href="./assets/icons8-dinner-pastel-72.png" sizes="72x72">
+    <link rel="icon" type="image/png" href="/assets/icons8-dinner-pastel-96.png" sizes="96x96">
     <link rel="stylesheet" href="./styles/style.css">
 	<link rel="preconnect" href="https://fonts.googleapis.com">
 	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -15,26 +20,38 @@
         <div class="headerNav">
             <h1>Recipe Generator</h1>
             <nav>
-                <ul>
-                    <li>
-                        <a href="./index.html">Cuisine</a>
-                    </li>
-                    <li>
-                        <a href="./diet.html">Diet</a>
-                    </li>
-                    <li>
-                        <a href="./search.html">Search</a>
-                    </li>
-                </ul>
+                <div class="slideDownMenu" id="menu">
+                    <h2>Find new recipes by:</h2>
+                    <ul class="menu" >
+                        <li>
+                            <a href="./index.html">Cuisine</a>
+                        </li>
+                        <li>
+                            <a href="./diet.html">Diet</a>
+                        </li>
+                        <li>
+                            <a href="./search.html">Search</a>
+                        </li>
+                    </ul>
+                </div>
             </nav>
+            <div class="hamburgerMenu">
+                <button class="menuButton" id="menuButton">
+                    <i class="fa-solid fa-bars" aria-hidden="true" ></i>
+                    <span class="sr-only">Menu Button</span>
+                </button>
+                <button class="closeButton hidden" id="closeButton">
+                    <i class="fa-solid fa-xmark " aria-hidden="true" ></i>
+                    <span class="sr-only">Close Menu</span>
+                </button>
+            </div>
         </div>
         <div class="headerImage"></div>
     </header>
     <main>
         <section class="introDropdown indroDiet">
             <div class="wrapper">
-                <p>Are you hungry and not sure what to cook? Need some inspiration for dinner today?</p>
-                <p>All you need to do is select a cuisine from the options below <br> and we will choose the dish for you!</p>
+                <p>Select your dietary preference from the dropdown below to see a random recipe!</p>
 
                 <form action="#" id="dietSelectForm">
 					<select name="dietSelect" id="dietSelect">
@@ -79,5 +96,5 @@
         </div>
     </footer>
 </body>
-<script src="./diet.js"></script>
+<script src="./main.js/diet.js" type="module"></script>
 </html>

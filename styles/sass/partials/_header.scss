@@ -17,7 +17,7 @@ header {
             display: flex;
             align-items: center;
 
-            .menu {
+            .slideDownMenu {
                 display: flex;
                 flex-direction: column;
                 justify-content: center;
@@ -30,25 +30,31 @@ header {
                 right: 0;
                 bottom: 0;
                 background: $accentColor;
+                opacity: 0.9;
                 z-index: 2;
 
                 li {
+                    padding: 0.5rem 0;
                     a {
-                        padding: 1rem;
                         text-transform: uppercase;
                         transition: 0.4s;
-                        font-size: 3rem;;
+                        font-size: 2rem;;
                         &:hover, &:focus {
                             color: $secondaryColor;
                         }
                     }
                 }
-            }
 
+            // class gets toggled when clicked on using JS
+            }
+            .showMenu {
+                transform: translateY(0);
+                top: 10vh;
+            }
+            
         }
         .hamburgerMenu {
             padding-right: 2rem;
-
         }
     }
     .headerImage{
@@ -56,13 +62,8 @@ header {
         background-image: url('../assets/backgroundImage.jpg'); 
         background-position: center; 
         background-size: cover;
-        height: 50vh;
+        height: 60vh;
     }
-}
-
-#menu.showMenu {
-    transform: translateY(0);
-    top: 10vh;
 }
 
 .hidden {

@@ -302,7 +302,7 @@ header .headerNav nav {
       -ms-flex-align: center;
           align-items: center;
 }
-header .headerNav nav .menu {
+header .headerNav nav .slideDownMenu {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -328,17 +328,25 @@ header .headerNav nav .menu {
   right: 0;
   bottom: 0;
   background: #43AA8B;
+  opacity: 0.9;
   z-index: 2;
 }
-header .headerNav nav .menu li a {
-  padding: 1rem;
+header .headerNav nav .slideDownMenu li {
+  padding: 0.5rem 0;
+}
+header .headerNav nav .slideDownMenu li a {
   text-transform: uppercase;
   -webkit-transition: 0.4s;
   transition: 0.4s;
-  font-size: 3rem;
+  font-size: 2rem;
 }
-header .headerNav nav .menu li a:hover, header .headerNav nav .menu li a:focus {
+header .headerNav nav .slideDownMenu li a:hover, header .headerNav nav .slideDownMenu li a:focus {
   color: #003391;
+}
+header .headerNav nav .showMenu {
+  -webkit-transform: translateY(0);
+          transform: translateY(0);
+  top: 10vh;
 }
 header .headerNav .hamburgerMenu {
   padding-right: 2rem;
@@ -347,13 +355,7 @@ header .headerImage {
   background-image: url("../assets/backgroundImage.jpg");
   background-position: center;
   background-size: cover;
-  height: 50vh;
-}
-
-#menu.showMenu {
-  -webkit-transform: translateY(0);
-          transform: translateY(0);
-  top: 10vh;
+  height: 60vh;
 }
 
 .hidden {
@@ -396,7 +398,7 @@ main {
 }
 
 .introDropdown, .introSearch {
-  margin: 50px 0;
+  margin: 30px 0;
   width: 100%;
 }
 .introDropdown p, .introSearch p {
@@ -413,7 +415,6 @@ main {
   color: white;
 }
 .introDropdown .recipeSearchForm input, .introSearch .recipeSearchForm input {
-  margin-top: 1rem;
   padding: 0.5rem;
   border: 2px solid #43AA8B;
   outline: none;
@@ -606,6 +607,25 @@ main {
 }
 
 @media (max-width: 720px) {
+  .wrapper {
+    width: 85%;
+  }
+  header .headerNav {
+    height: 7vh;
+  }
+  header .headerNav h1 {
+    font-size: 1.5rem;
+    padding: 0.5rem 0 0.5rem 1rem;
+  }
+  header .headerNav .hamburgerMenu {
+    padding-right: 1rem;
+  }
+  header .headerImage {
+    height: 40vh;
+  }
+  header #menu.showMenu {
+    top: 7vh;
+  }
   footer .footerContent {
     -webkit-box-orient: vertical;
     -webkit-box-direction: normal;
@@ -613,9 +633,21 @@ main {
             flex-direction: column;
   }
   footer .footerContent p {
-    padding-top: 1rem;
+    padding-top: 0.5rem;
   }
   footer .footerContent p:last-child {
     padding-bottom: 1rem;
+  }
+}
+@media (max-width: 380px) {
+  header .headerNav {
+    height: 7vh;
+  }
+  header .headerNav h1 {
+    font-size: 1.25rem;
+    padding: 0.5rem 0 0.5rem 1rem;
+  }
+  header .headerImage {
+    height: 40vh;
   }
 }
