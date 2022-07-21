@@ -14,18 +14,21 @@
                 padding-right: 1rem;
             }
         }
-        
         .headerImage {
             height: 40vh;
         }
-
-
-
-        #menu.showMenu {
-            top: 7vh
+        nav {
+            .showMenu {
+                    top: 7vh
+                }
         }
+
+    }
+    main {
+        min-height: 30vh;
     }
     footer {
+        height: 23vh;
         .footerContent {
             flex-direction: column;
             p {
@@ -41,14 +44,10 @@
 @media (max-width: 380px) {
     header {
         .headerNav {
-            height: 7vh;
             h1 {
                 font-size: 1.25rem;
                 padding: 0.5rem 0 0.5rem 1rem;
             }
-        }
-        .headerImage {
-            height: 40vh;
         }
     }
 }
