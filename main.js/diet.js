@@ -1,3 +1,4 @@
+import burgerMenu from "./burgerMenuModule.js";
 import { apiCallDiet } from "./apiCallsModule.js";
 import { cardListener } from "./displayDataModule.js";
 import populateSelect from "./selectPopulateModule.js";
@@ -20,6 +21,7 @@ recipesApp.dietOptions = [
     "Whole30"
 ];
 
+
 // Adding event listener to the SELECT to listen for users selection and calling an API call method
 recipesApp.userQuery = function(){
     document.querySelector('select').addEventListener('change', function (event) {
@@ -31,6 +33,7 @@ recipesApp.userQuery = function(){
 
 // Init
 recipesApp.init = function(){
+    burgerMenu();
     populateSelect(recipesApp.dietOptions);
     recipesApp.userQuery();
     cardListener();

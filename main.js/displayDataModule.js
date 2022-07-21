@@ -1,12 +1,11 @@
+// Once API call has been completed, these functions display/append the information on the recipe card
+
 export function displaydata (recipesData) {
     const outerDiv = document.querySelector('#recipeResult');
     const recipeInstructionsDiv = document.querySelector("#recipeInstructions");
     const newHeading = document.createElement('h2');
     const imageItem = document.createElement('img');
     const articleItem = document.createElement("article");
-    // Clearing Div so new recipe can be displayed
-    outerDiv.innerHTML = '';
-    recipeInstructionsDiv.innerHTML = "";
     // assigning the information from the object to HTML
     newHeading.textContent = recipesData.title;
     imageItem.src = recipesData.image;
@@ -31,7 +30,6 @@ export function displaydata (recipesData) {
 // Defining a method to get the randomly selected recipe and return the ingredients list
 export function displayIngredients (recipesData) {
   const ulItem = document.querySelector("#ingredientsList");
-  ulItem.innerHTML = '';
   const ingredientsArray = recipesData.extendedIngredients;
   ingredientsArray.forEach( ingredientObj => {
       const listItem = document.createElement("li");
