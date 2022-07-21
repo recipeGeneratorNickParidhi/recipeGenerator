@@ -1,3 +1,5 @@
+// Once API call has been completed, these functions display/append the information on the recipe card
+
 export function displaydata (recipesData) {
     const outerDiv = document.querySelector('#recipeResult');
     const recipeInstructionsDiv = document.querySelector("#recipeInstructions");

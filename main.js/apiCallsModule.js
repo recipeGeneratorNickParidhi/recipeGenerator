@@ -25,7 +25,7 @@ export function apiCallSearch (searchedRecipe) {
         .then(function (jsonData) {
             apiCallRecipe(jsonData[0].id);
         })
-        .catch(function (error) {
+        .catch(function () {
             errorHandle();
         })
 }

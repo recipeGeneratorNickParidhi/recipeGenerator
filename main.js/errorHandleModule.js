@@ -1,3 +1,5 @@
+// handles errors for API calls, in case we don't get back the data we need
+
 export default function errorHandle () {
     document.querySelector('#cardHolder').style.display = 'block';
     document.querySelector('#cardHolderInner').classList.remove('rotateCard');
