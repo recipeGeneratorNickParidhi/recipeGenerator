@@ -333,6 +333,7 @@ header .headerNav nav .slideDownMenu {
 }
 header .headerNav nav .slideDownMenu li {
   padding: 0.5rem 0;
+  text-align: center;
 }
 header .headerNav nav .slideDownMenu li a {
   text-transform: uppercase;
@@ -422,9 +423,6 @@ main {
   outline: none;
 }
 
-.results {
-  margin: 0 0 75px;
-}
 .results .wrapper .cardHolder {
   display: none;
   -webkit-perspective: 40rem;
@@ -591,6 +589,9 @@ main {
   margin-top: 25px;
   text-align: left;
 }
+.results .wrapper .recipeInstructions article li {
+  padding-bottom: 0.25rem;
+}
 .results .wrapper .recipeInstructions .recipeLink {
   padding-top: 1rem;
 }
@@ -601,6 +602,9 @@ main {
 }
 .results .wrapper .recipeInstructions .recipeLink a:hover {
   color: #003391;
+}
+.results .wrapper .recipeInstructions .addMargin {
+  margin-bottom: 75px;
 }
 
 .rotateCard {
@@ -622,11 +626,11 @@ main {
   header .headerNav .hamburgerMenu {
     padding-right: 1rem;
   }
+  header .headerNav nav .showMenu {
+    top: 7vh;
+  }
   header .headerImage {
     height: 40vh;
-  }
-  header nav .showMenu {
-    top: 7vh;
   }
   main {
     min-height: 30vh;

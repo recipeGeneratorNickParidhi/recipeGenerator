@@ -1,5 +1,5 @@
 .results {
-    margin: 0 0 75px;
+    // margin: 0 0 75px;
 
     .wrapper {
 
@@ -128,6 +128,11 @@
         .recipeInstructions {
             margin-top: 25px;
             text-align: left;
+            article {
+                li {
+                    padding-bottom: 0.25rem;
+                }
+            }
             .recipeLink {
                 padding-top: 1rem;
                 a {
@@ -137,6 +142,9 @@
                         color: $secondaryColor;
                     }
                 }
+            }
+            .addMargin {
+                margin-bottom: 75px;
             }
         }
 

@@ -22,7 +22,7 @@ export function displaydata (recipesData) {
 
     recipeInstructionsDiv.innerHTML = 
     `<article class="recipeInfo">${articleItem.textContent}</article>
-    <p class="recipeLink">  For the original recipe, click the link 
+    <p class="recipeLink addMargin">  For the original recipe, click the link 
     <a href="${recipesData.sourceUrl}">here</a> `;
 
 }
