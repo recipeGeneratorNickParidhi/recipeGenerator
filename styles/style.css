@@ -367,6 +367,7 @@ footer {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
+  height: 10vh;
 }
 footer .footerContent {
   width: 100%;
@@ -395,10 +396,11 @@ footer .footerContent p a:hover {
 
 main {
   text-align: center;
+  min-height: 20vh;
 }
 
 .introDropdown, .introSearch {
-  margin: 30px 0;
+  padding: 30px 0;
   width: 100%;
 }
 .introDropdown p, .introSearch p {
@@ -623,8 +625,14 @@ main {
   header .headerImage {
     height: 40vh;
   }
-  header #menu.showMenu {
+  header nav .showMenu {
     top: 7vh;
+  }
+  main {
+    min-height: 30vh;
+  }
+  footer {
+    height: 23vh;
   }
   footer .footerContent {
     -webkit-box-orient: vertical;
@@ -640,14 +648,8 @@ main {
   }
 }
 @media (max-width: 380px) {
-  header .headerNav {
-    height: 7vh;
-  }
   header .headerNav h1 {
     font-size: 1.25rem;
     padding: 0.5rem 0 0.5rem 1rem;
-  }
-  header .headerImage {
-    height: 40vh;
   }
 }

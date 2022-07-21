@@ -1,9 +1,10 @@
 main {
     text-align: center;
+    min-height: 20vh;
 }
 
 .introDropdown, .introSearch {
-    margin: 30px 0;
+    padding: 30px 0;
     width: 100%;
     p {
         padding: 1rem 0;
