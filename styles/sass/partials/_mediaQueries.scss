@@ -13,14 +13,14 @@
             .hamburgerMenu {
                 padding-right: 1rem;
             }
+            nav {
+                .showMenu {
+                        top: 7vh
+                    }
+            }
         }
         .headerImage {
             height: 40vh;
-        }
-        nav {
-            .showMenu {
-                    top: 7vh
-                }
         }
 
     }

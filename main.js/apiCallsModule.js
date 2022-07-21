@@ -12,7 +12,7 @@ export function apiCallSearch (searchedRecipe) {
     const url = new URL(apiUrl);
     url.search = new URLSearchParams({
         apiKey: apiKey,
-        query: searchedRecipe,
+        query: searchedRecipe
     });
     fetch(url)
         .then(function (response) {
@@ -37,6 +37,7 @@ export function apiCallCuisine  (selectedCuisine) {
     url.search = new URLSearchParams({
         apiKey: apiKey,
         cuisine: selectedCuisine,
+        number: 100
     });
     fetch(url)
         .then(function (response) {
@@ -61,6 +62,7 @@ export function apiCallDiet (selectedDiet) {
     url.search = new URLSearchParams({
         apiKey: apiKey,
         diet: selectedDiet,
+        number: 100
     });
     fetch(url)
         .then(function (response) {
