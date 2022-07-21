@@ -367,6 +367,7 @@ footer {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
+  height: 10vh;
 }
 footer .footerContent {
   width: 100%;
@@ -395,10 +396,11 @@ footer .footerContent p a:hover {
 
 main {
   text-align: center;
+  height: 20vh;
 }
 
 .introDropdown, .introSearch {
-  margin: 30px 0;
+  padding: 30px 0;
   width: 100%;
 }
 .introDropdown p, .introSearch p {
