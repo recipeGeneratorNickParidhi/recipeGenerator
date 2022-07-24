@@ -13,10 +13,10 @@ recipesApp.dietOptions = [
     "Lacto-Vegetarian",
     "Low FODMAP",
     "Ovo-Vegetarian",
-    "Vegan",
-    "Pescetarian",
     "Paleo",
+    "Pescetarian",
     "Primal",
+    "Vegan",
     "Vegetarian",
     "Whole30"
 ];
