@@ -1,5 +1,21 @@
 // setting base styles that are common throughout the html
 
+// to skip to main content for those who are using keyboards and don't have to scroll through the header - on all pages
+.skip-link {
+    position: absolute;
+    left: -1000px;
+    top: 5px;
+    z-index: 999;
+    background: white;
+    color: black;
+  }
+  
+  .skip-link:focus {
+    left: 0;
+  }
+
+  
+
 img {
     max-width: 100%;
     display: block;

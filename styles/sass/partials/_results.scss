@@ -128,9 +128,15 @@
         .recipeInstructions {
             margin-top: 25px;
             text-align: left;
+            h3 {
+                padding: .75rem 0;
+            }
             article {
-                li {
-                    padding-bottom: 0.25rem;
+                ol {
+                    list-style-position: inside;
+                    li {
+                        padding-bottom: 0.25rem;
+                    }
                 }
             }
             .recipeLink {

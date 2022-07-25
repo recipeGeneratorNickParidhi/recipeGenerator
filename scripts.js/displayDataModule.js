@@ -21,7 +21,9 @@ export function displaydata (recipesData) {
     <button class="ingredientsButton" id="ingredientsButton">Ingredients</button>`;
 
     recipeInstructionsDiv.innerHTML = 
-    `<article class="recipeInfo">${articleItem.textContent}</article>
+
+    `<h3>Instructions:</h3>
+    <article class="recipeInfo">${articleItem.textContent}</article>
     <p class="recipeLink addMargin">  For the original recipe, click the link 
     <a target="_blank" href="${recipesData.sourceUrl}">here <i class="fa-solid fa-arrow-up-right-from-square"></i></a> `;
 }
