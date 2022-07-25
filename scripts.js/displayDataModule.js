@@ -23,8 +23,7 @@ export function displaydata (recipesData) {
     recipeInstructionsDiv.innerHTML = 
     `<article class="recipeInfo">${articleItem.textContent}</article>
     <p class="recipeLink addMargin">  For the original recipe, click the link 
-    <a href="${recipesData.sourceUrl}">here</a> `;
-
+    <a target="_blank" href="${recipesData.sourceUrl}">here <i class="fa-solid fa-arrow-up-right-from-square"></i></a> `;
 }
 
 // Defining a method to get the randomly selected recipe and return the ingredients list

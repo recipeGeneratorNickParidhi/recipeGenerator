@@ -603,6 +603,9 @@ main {
 .results .wrapper .recipeInstructions .recipeLink a:hover {
   color: #003391;
 }
+.results .wrapper .recipeInstructions .recipeLink a i {
+  font-size: 0.7rem;
+}
 .results .wrapper .recipeInstructions .addMargin {
   margin-bottom: 75px;
 }
