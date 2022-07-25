@@ -256,6 +256,19 @@ a {
   color: inherit;
 }
 
+.skip-link {
+  position: absolute;
+  left: -1000px;
+  top: 5px;
+  z-index: 999;
+  background: white;
+  color: black;
+}
+
+.skip-link:focus {
+  left: 0;
+}
+
 img {
   max-width: 100%;
   display: block;
@@ -589,7 +602,13 @@ main {
   margin-top: 25px;
   text-align: left;
 }
-.results .wrapper .recipeInstructions article li {
+.results .wrapper .recipeInstructions h3 {
+  padding: 0.75rem 0;
+}
+.results .wrapper .recipeInstructions article ol {
+  list-style-position: inside;
+}
+.results .wrapper .recipeInstructions article ol li {
   padding-bottom: 0.25rem;
 }
 .results .wrapper .recipeInstructions .recipeLink {

@@ -14,5 +14,4 @@ export default function errorHandle () {
     backHeading.textContent = 'Sorry - No Recipes match that selection. Please select again';
     outerDiv.appendChild(newHeading);
     ulItem.appendChild(backHeading);
-    console.log('hello')
 }
